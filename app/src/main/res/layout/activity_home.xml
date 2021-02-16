@@ -53,8 +53,8 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginTop="40dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
 
         tools:context=".view.home.HomeActivity">
 
@@ -67,8 +67,8 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="160dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="@id/guideline"
@@ -109,8 +109,8 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="160dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         app:layout_constraintStart_toStartOf="@id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -151,8 +151,8 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="160dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/waitingbtn"
@@ -160,7 +160,7 @@
         android:orientation="vertical"
         android:gravity="center"
         android:id="@+id/acceptedbtn"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         >
 
         <ImageView
@@ -203,7 +203,7 @@
         android:orientation="vertical"
         android:gravity="center"
         android:id="@+id/totaldeliveryubtn"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         >
 
         <ImageView
@@ -237,8 +237,8 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="160dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         app:layout_constraintStart_toStartOf="@id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/deliveredbtn"
@@ -247,7 +247,7 @@
         android:gravity="center"
         android:id="@+id/canceledbtn"
         android:visibility="visible"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         >
 
         <ImageView
@@ -280,8 +280,8 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="160dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/acceptedbtn"
@@ -289,7 +289,7 @@
         android:orientation="vertical"
         android:gravity="center"
         android:id="@+id/totalstoreubtn"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         >
 
         <ImageView
