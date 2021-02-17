@@ -20,6 +20,10 @@
     <color name="yellowfateh">#F68E20</color>
     <color name="greenkhameq">#51A408</color>
     <color name="offwhite">#E8E8E8</color>
+    <color name="waitcolor">#F48424</color>
+    <color name="delivercolor">#3BBC15</color>
+    <color name="acceptedcolor">#1473E6</color>
+    <color name="cancelcolor">#D20202</color>
 
     <color name="fay">#F8D2BA</color>
 </resources>

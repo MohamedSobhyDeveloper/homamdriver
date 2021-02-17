@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:background="@drawable/buttonwhitebordergray"
+    android:elevation="1dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="UnusedAttribute">
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/order_card"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+
+        >
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/pasta"
+            android:scaleType="centerCrop"
+            android:id="@+id/img_order"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            tools:ignore="RtlCompat" />
+
+
+        <LinearLayout
+            android:id="@+id/layout_order"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toEndOf="@+id/img_order"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/cost_tv"
+            android:layout_marginStart="5dp"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            tools:ignore="RtlCompat">
+
+            <TextView
+                android:id="@+id/order_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Big zaks"
+                android:singleLine="true"
+                android:textSize="18sp"
+                android:fontFamily="@font/robotobold"
+                android:textColor="@color/black"
+                tools:ignore="HardcodedText" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="3disrere"
+                    android:id="@+id/num_item"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/robotoregular"
+                    android:textColor="@color/black"
+                    tools:ignore="HardcodedText,NestedWeights" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/order_status"
+                    android:textSize="14sp"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/robotoregular"
+                    android:textColor="@color/greenkhameq"
+                    android:text="waiting order"
+
+
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                android:id="@+id/lin_date"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/num_order"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/robotoregular"
+                    android:textColor="#655E5E"
+                    android:text="#320v"
+                    tools:ignore="HardcodedText,NestedWeights" />
+
+                <TextView
+                    android:id="@+id/txt_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/robotoregular"
+                    android:textColor="#655E5E"
+                    android:text="2/11/2012"
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cost_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="170.00 L.E"
+            android:textSize="16sp"
+            app:layout_constraintTop_toTopOf="@+id/layout_order"
+            android:layout_marginEnd="10dp"
+            android:textColor="@color/orangefateh"
+            tools:ignore="HardcodedText,RtlCompat" />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
