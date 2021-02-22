@@ -36,10 +36,10 @@ class OrderActivity : AppCompatActivity() {
 
     private fun click() {
 
-        binding.backbtn.setOnClickListener {
-            startActivity(Intent(this,HomeActivity::class.java))
-
-        }
+//        binding.backbtn.setOnClickListener {
+//            startActivity(Intent(this,HomeActivity::class.java))
+//
+//        }
     }
 
     private fun initialize() {

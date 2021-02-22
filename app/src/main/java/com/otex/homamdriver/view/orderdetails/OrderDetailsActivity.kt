@@ -25,10 +25,17 @@ class OrderDetailsActivity : AppCompatActivity() {
         setContentView(binding.root)
           typeorder()
           initialize()
-
+          click()
 
 
     }
+
+    private fun click() {
+//        binding.backbtn.setOnClickListener {
+//            startActivity(Intent(this,OrderActivity::class.java))
+//        }
+    }
+
     @SuppressLint("NewApi")
     private fun typeorder() {
          type= intent.getStringExtra("type").toString()
@@ -44,9 +51,7 @@ class OrderDetailsActivity : AppCompatActivity() {
             binding.txtType.setTextColor(getColor(R.color.acceptedcolor))
         }
 
-        binding.backbtn.setOnClickListener {
-            startActivity(Intent(this,OrderActivity::class.java))
-        }
+
 
     }
     private fun initialize() {
