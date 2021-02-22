@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="1dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginEnd="5dp"
+    android:layout_marginStart="5dp"
+    android:background="@drawable/buttonwhitebordergray"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_num_order"
+            app:layout_constraintTop_toTopOf="@+id/txt_name_order"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_name_order"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="1"
+            android:textSize="18sp"
+            android:fontFamily="@font/robotoregular"
+            android:textColor="@color/black"
+            android:layout_marginStart="15dp"
+
+            />
+
+        <TextView
+            android:id="@+id/txt_name_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txt_num_order"
+            android:text="BiG ZAK"
+            android:textSize="17sp"
+            android:fontFamily="@font/robotoregular"
+            android:textColor="@color/black"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="10dp"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_price_order"
+            app:layout_constraintTop_toTopOf="@+id/txt_name_order"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_name_order"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="170.00"
+            android:textSize="15sp"
+            android:fontFamily="@font/robotoregular"
+            android:textColor="@color/eyecolor"
+            android:layout_marginEnd="10dp"
+
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_compo"
+            app:layout_constraintTop_toBottomOf="@+id/txt_name_order"
+            app:layout_constraintStart_toEndOf="@+id/txt_num_order"
+            android:text="Compo"
+            android:textSize="17sp"
+            android:fontFamily="@font/robotoregular"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+           />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_addition"
+            app:layout_constraintTop_toBottomOf="@+id/txt_compo"
+            app:layout_constraintStart_toEndOf="@+id/txt_num_order"
+            app:layout_constraintEnd_toStartOf="@+id/txt_price_addition"
+            android:text="Additions:"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="25dp"
+            android:layout_marginEnd="20dp"
+            android:textSize="17sp"
+            android:fontFamily="@font/robotoregular"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_price_compo"
+            app:layout_constraintTop_toTopOf="@+id/txt_compo"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_compo"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="75.00 X1"
+            android:textSize="15sp"
+            android:fontFamily="@font/robotoregular"
+            android:textColor="@color/eyecolor"
+            android:layout_marginEnd="10dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_price_addition"
+            app:layout_constraintTop_toTopOf="@+id/txt_addition"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_addition"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="98.00 x1"
+            android:textSize="15sp"
+            android:fontFamily="@font/robotoregular"
+            android:textColor="@color/eyecolor"
+            android:layout_marginEnd="10dp"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

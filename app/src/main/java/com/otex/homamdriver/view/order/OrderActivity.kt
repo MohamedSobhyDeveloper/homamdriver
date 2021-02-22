@@ -1,5 +1,6 @@
 package com.otex.homamdriver.view.order
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
@@ -7,6 +8,7 @@ import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.otex.homamdriver.R
 import com.otex.homamdriver.databinding.ActivityOrderBinding
+import com.otex.homamdriver.view.home.HomeActivity
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.MyOrderListAdapter
 
 class OrderActivity : AppCompatActivity() {
@@ -34,6 +36,10 @@ class OrderActivity : AppCompatActivity() {
 
     private fun click() {
 
+        binding.backbtn.setOnClickListener {
+            startActivity(Intent(this,HomeActivity::class.java))
+
+        }
     }
 
     private fun initialize() {

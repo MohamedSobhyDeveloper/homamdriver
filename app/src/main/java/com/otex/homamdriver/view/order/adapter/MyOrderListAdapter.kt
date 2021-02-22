@@ -28,11 +28,6 @@ class MyOrderListAdapter(private val context: Context, val chartList: MutableLis
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
-
-        itemBinding?.orderCard?.setOnClickListener {
-           context.startActivity(Intent(context, OrderDetailsActivity::class.java))
-        }
-
         if (type.equals("waiting")){
             itemBinding?.orderStatus!!.text=context.getString(R.string.waiting_order)
             itemBinding!!.orderStatus.setTextColor(context.getColor(R.color.waitcolor))
@@ -46,6 +41,14 @@ class MyOrderListAdapter(private val context: Context, val chartList: MutableLis
             itemBinding?.orderStatus!!.text=context.getString(R.string.canceled_order)
             itemBinding!!.orderStatus.setTextColor(context.getColor(R.color.cancelcolor))
         }
+
+        itemBinding?.orderCard?.setOnClickListener {
+            var intent=Intent(context,OrderDetailsActivity::class.java)
+            intent.putExtra("type",type)
+            context.startActivity(intent)
+        }
+
+
 
 
 

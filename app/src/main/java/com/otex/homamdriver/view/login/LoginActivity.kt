@@ -25,6 +25,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun click() {
 
+        val type=intent.getStringExtra("type")
 
         binding.backbtn.setOnClickListener {
             finish()
@@ -36,8 +37,18 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btnLogin.setOnClickListener {
-            startActivity(Intent(this, HomeActivity::class.java))
-            finish()
+            if(type.equals("store")) {
+
+                val intent = Intent(this, HomeActivity::class.java)
+                intent.putExtra("type","store")
+                startActivity(intent)
+                finish()
+            }else {
+                val intent = Intent(this, HomeActivity::class.java)
+                intent.putExtra("type","driver")
+                startActivity(intent)
+                finish()
+            }
         }
     }
 

@@ -3,6 +3,7 @@ package com.otex.homamdriver.view.home
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.otex.homamdriver.databinding.ActivityHomeBinding
 import com.otex.homamdriver.view.order.OrderActivity
 
@@ -13,8 +14,18 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        type_user()
         click()
+    }
+
+    private fun type_user() {
+        val type=intent.getStringExtra("type")
+
+        if(type.equals("driver")){
+            binding.canceledbtn.visibility=View.GONE
+            binding.totalstoreubtn.visibility=View.GONE
+        }
+
     }
 
     private fun click() {

@@ -18,5 +18,8 @@
     <string name="canceled_order">Canceled Order</string>
     <string name="restaurant">Restaurant</string>
     <string name="driver">Driver</string>
-
+    <string name="order_details">Order Details</string>
+    <string name="total">Total</string>
+    <string name="delivery">Delivery</string>
+    <string name="tax">Tax</string>
 </resources>

@@ -7,6 +7,7 @@ import com.otex.homamdriver.R
 import com.otex.homamdriver.databinding.ActivityHomeBinding
 import com.otex.homamdriver.databinding.ActivityMainBinding
 import com.otex.homamdriver.view.home.HomeActivity
+import com.otex.homamdriver.view.login.LoginActivity
 import com.otex.homamdriver.view.order.OrderActivity
 
 class MainActivity : AppCompatActivity() {
@@ -22,14 +23,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun click() {
         binding.btnStore.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             intent.putExtra("type", "store")
             startActivity(intent)
         }
 
         binding.btnDriver.setOnClickListener {
-            val intent = Intent(this, OrderActivity::class.java)
-            intent.putExtra("type", "waiting")
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.putExtra("type", "driver")
             startActivity(intent)
         }
     }
