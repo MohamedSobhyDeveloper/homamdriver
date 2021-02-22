@@ -15,5 +15,7 @@
     <string name="delivered">Delivered</string>
     <string name="accepted_order">Accepted Order</string>
     <string name="canceled_order">Canceled Order</string>
+    <string name="restaurant">Restaurant</string>
+    <string name="driver">Driver</string>
 
 </resources>

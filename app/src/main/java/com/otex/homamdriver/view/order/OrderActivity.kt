@@ -3,6 +3,7 @@ package com.otex.homamdriver.view.order
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.otex.homamdriver.R
 import com.otex.homamdriver.databinding.ActivityOrderBinding
