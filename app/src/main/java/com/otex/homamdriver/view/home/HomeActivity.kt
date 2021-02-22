@@ -3,6 +3,7 @@ package com.otex.homamdriver.view.home
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.otex.homamdriver.databinding.ActivityHomeBinding
 import com.otex.homamdriver.view.order.OrderActivity
@@ -24,19 +25,20 @@ class HomeActivity : AppCompatActivity() {
         if(type.equals("driver")){
             binding.canceledbtn.visibility=View.GONE
             binding.totalstoreubtn.visibility=View.GONE
+        }else{
+            Log.e("type","not driver")
         }
 
     }
 
     private fun click() {
-        binding.backbtn.setOnClickListener {
-            finish()
-        }
+
 
         binding.waitingbtn.setOnClickListener {
             val intent=Intent(this,OrderActivity::class.java)
             intent.putExtra("type","waiting")
             startActivity(intent)
+
         }
 
         binding.deliveredbtn.setOnClickListener {

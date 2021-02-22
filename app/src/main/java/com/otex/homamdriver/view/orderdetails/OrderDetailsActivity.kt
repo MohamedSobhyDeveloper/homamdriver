@@ -10,6 +10,7 @@ import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.otex.homamdriver.R
 import com.otex.homamdriver.databinding.ActivityOrderDetailsBinding
+import com.otex.homamdriver.view.home.HomeActivity
 import com.otex.homamdriver.view.login.LoginActivityViewModel
 import com.otex.homamdriver.view.order.OrderActivity
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.MyOrderListAdapter
@@ -31,9 +32,12 @@ class OrderDetailsActivity : AppCompatActivity() {
     }
 
     private fun click() {
-//        binding.backbtn.setOnClickListener {
-//            startActivity(Intent(this,OrderActivity::class.java))
-//        }
+        binding.backbtn.setOnClickListener {
+            var intent=Intent(this, OrderActivity::class.java)
+            intent.putExtra("type",type)
+            startActivity(intent)
+            finish()
+        }
     }
 
     @SuppressLint("NewApi")
@@ -67,5 +71,8 @@ class OrderDetailsActivity : AppCompatActivity() {
 
         }
     }
-
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
 }

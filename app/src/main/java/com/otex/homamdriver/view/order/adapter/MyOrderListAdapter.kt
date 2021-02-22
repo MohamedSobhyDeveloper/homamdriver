@@ -46,6 +46,7 @@ class MyOrderListAdapter(private val context: Context, val chartList: MutableLis
             var intent=Intent(context,OrderDetailsActivity::class.java)
             intent.putExtra("type",type)
             context.startActivity(intent)
+
         }
 
 

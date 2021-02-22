@@ -24,4 +24,6 @@
     <string name="tax">Tax</string>
     <string name="accepted">Accepted</string>
     <string name="rejected">Rejected</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="enter_email">Enter Email or Phone</string>
 </resources>

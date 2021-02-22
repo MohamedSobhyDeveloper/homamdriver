@@ -147,7 +147,7 @@
                 app:boxCornerRadiusBottomStart="6dp"
                 app:boxCornerRadiusTopEnd="6dp"
                 app:boxCornerRadiusTopStart="6dp"
-                app:boxStrokeWidth="2dp"
+                app:boxStrokeWidth="0.5dp"
                 android:textColorHint="@color/gray"
                 >
             <EditText
@@ -194,7 +194,7 @@
                 app:boxCornerRadiusBottomStart="6dp"
                 app:boxCornerRadiusTopEnd="6dp"
                 app:boxCornerRadiusTopStart="6dp"
-                app:boxStrokeWidth="2dp"
+                app:boxStrokeWidth="0.5dp"
                 android:textColorHint="@color/gray"
                 app:passwordToggleEnabled="true"
                 android:hint="@string/password"

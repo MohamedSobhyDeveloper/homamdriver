@@ -3,6 +3,7 @@ package com.otex.homamdriver.view.order
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,7 +15,7 @@ import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.MyOrde
 class OrderActivity : AppCompatActivity() {
     lateinit var binding: ActivityOrderBinding
     private var orderActivityViewModel : OrderActivityViewModel? = null
-
+    var type:String=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityOrderBinding.inflate(layoutInflater)
@@ -36,15 +37,18 @@ class OrderActivity : AppCompatActivity() {
 
     private fun click() {
 
-//        binding.backbtn.setOnClickListener {
-//            startActivity(Intent(this,HomeActivity::class.java))
-//
-//        }
+        binding.backbtn.setOnClickListener {
+            var intent=Intent(this,HomeActivity::class.java)
+            intent.putExtra("type",type)
+            startActivity(intent)
+            finish()
+
+        }
     }
 
     private fun initialize() {
 
-        val type=intent.getStringExtra("type")
+         type=intent.getStringExtra("type").toString()
 
         if (type.equals("waiting")){
             binding.orderTypeTv.text=getString(R.string.waiting_order)
@@ -57,6 +61,8 @@ class OrderActivity : AppCompatActivity() {
         }else if (type.equals("canceled")){
             binding.orderTypeTv.text=getString(R.string.canceled_order)
 
+        }else{
+            Log.e("type","failur")
         }
 
 
@@ -71,5 +77,10 @@ class OrderActivity : AppCompatActivity() {
             binding.recOrder.adapter = adapter
 
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
     }
 }
