@@ -52,6 +52,7 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
+        android:fillViewport="true"
         android:layout_height="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -69,7 +70,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="196dp" />
+            app:layout_constraintGuide_percent="0.5"
+            />
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="160dp"
@@ -200,8 +202,8 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="160dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         app:layout_constraintStart_toStartOf="@id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/deliveredbtn"
@@ -252,7 +254,7 @@
         android:orientation="vertical"
         android:gravity="center"
         android:id="@+id/canceledbtn"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layout_marginTop="10dp"
         >
 
@@ -293,6 +295,7 @@
         app:layout_constraintTop_toBottomOf="@+id/acceptedbtn"
         android:background="@drawable/round_button_orange"
         android:orientation="vertical"
+        android:visibility="gone"
         android:gravity="center"
         android:id="@+id/totalstoreubtn"
         android:layout_marginTop="10dp"

@@ -8,9 +8,10 @@ import com.otex.homamdriver.R
 import com.otex.homamdriver.databinding.ActivityLoginBinding
 import com.otex.homamdriver.view.home.HomeActivity
 import com.otex.homamdriver.view.start.MainActivity
+import com.otex.homamuser.view.baseActivity.BaseActivity
 
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BaseActivity() {
 
     private var loginviewmodel : LoginActivityViewModel? = null
     lateinit var binding: ActivityLoginBinding

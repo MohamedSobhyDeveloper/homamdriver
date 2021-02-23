@@ -7,8 +7,9 @@ import android.util.Log
 import android.view.View
 import com.otex.homamdriver.databinding.ActivityHomeBinding
 import com.otex.homamdriver.view.order.OrderActivity
+import com.otex.homamuser.view.baseActivity.BaseActivity
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BaseActivity() {
     lateinit var binding: ActivityHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

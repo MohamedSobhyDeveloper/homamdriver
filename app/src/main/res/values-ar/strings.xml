@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">HomamDriver</string>
     <string name="login">Login</string>
-    <string name="rotate">0</string>
+    <string name="rotate">180</string>
     <string name="rotate0">180</string>
     <string name="welcome">ًWelcome</string>
     <string name="please_login_or_sign_up_to_continue_using_our_app">please login or sign up to continue using our app</string>

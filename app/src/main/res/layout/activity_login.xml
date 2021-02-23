@@ -97,10 +97,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_box"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_two"
+            android:layout_marginBottom="10dp"
             android:layout_marginTop="40dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:elevation="10dp"
+            android:elevation="5dp"
             tools:context=".view.login.LoginActivity"
             tools:ignore="UnusedAttribute">
 
@@ -171,6 +173,7 @@
                 android:text="@string/please_check_your_email_and_try_again"
                 android:textSize="12sp"
                 android:textColor="@color/red"
+                android:visibility="gone"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="22dp"
                 android:fontFamily="@font/rubikregular"
@@ -252,6 +255,12 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.8"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

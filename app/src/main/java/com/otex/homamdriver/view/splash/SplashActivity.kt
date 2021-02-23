@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import com.otex.homamdriver.R
 import com.otex.homamdriver.view.login.LoginActivity
+import com.otex.homamdriver.view.start.MainActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,7 +15,7 @@ class SplashActivity : AppCompatActivity() {
 
         Handler().postDelayed({
 
-            startActivity(Intent(this, LoginActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
             finish()
 
         }, 2000)

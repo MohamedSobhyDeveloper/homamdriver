@@ -10,9 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.otex.homamdriver.R
 import com.otex.homamdriver.databinding.ActivityOrderBinding
 import com.otex.homamdriver.view.home.HomeActivity
+import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.MyOrderListAdapter
 
-class OrderActivity : AppCompatActivity() {
+class OrderActivity : BaseActivity() {
     lateinit var binding: ActivityOrderBinding
     private var orderActivityViewModel : OrderActivityViewModel? = null
     var type:String=""
@@ -38,9 +39,7 @@ class OrderActivity : AppCompatActivity() {
     private fun click() {
 
         binding.backbtn.setOnClickListener {
-            var intent=Intent(this,HomeActivity::class.java)
-            intent.putExtra("type",type)
-            startActivity(intent)
+
             finish()
 
         }

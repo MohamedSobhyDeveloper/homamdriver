@@ -10,9 +10,10 @@ import com.daimajia.androidanimations.library.Techniques
 import com.daimajia.androidanimations.library.YoYo
 import com.otex.homamdriver.databinding.ActivityMainBinding
 import com.otex.homamdriver.view.login.LoginActivity
+import com.otex.homamuser.view.baseActivity.BaseActivity
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,13 +26,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun anim_btn() {
-        YoYo.with(Techniques.Flash)
-            .duration(700)
-            .repeat(1)
+        YoYo.with(Techniques.ZoomIn)
+            .duration(400)
+            .repeat(0)
             .playOn(binding.btnStore)
-        YoYo.with(Techniques.RollIn)
-            .duration(700)
-            .repeat(1)
+        YoYo.with(Techniques.ZoomIn)
+            .duration(400)
+            .repeat(0)
             .playOn(binding.btnDriver)
     }
 

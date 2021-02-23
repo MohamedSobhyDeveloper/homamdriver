@@ -18,16 +18,16 @@
         <activity android:name=".view.order.OrderActivity" />
         <activity android:name=".view.home.HomeActivity" />
         <activity android:name=".view.splash.SplashActivity">
-
-        </activity>
-        <activity android:name=".view.login.LoginActivity" />
-        <activity android:name=".view.start.MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".view.login.LoginActivity" />
+        <activity android:name=".view.start.MainActivity">
+
+
         </activity>
     </application>
 
