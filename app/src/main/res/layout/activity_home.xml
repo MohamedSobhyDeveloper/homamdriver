@@ -254,7 +254,7 @@
         android:orientation="vertical"
         android:gravity="center"
         android:id="@+id/canceledbtn"
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_marginTop="10dp"
         >
 
@@ -295,7 +295,7 @@
         app:layout_constraintTop_toBottomOf="@+id/acceptedbtn"
         android:background="@drawable/round_button_orange"
         android:orientation="vertical"
-        android:visibility="gone"
+        android:visibility="visible"
         android:gravity="center"
         android:id="@+id/totalstoreubtn"
         android:layout_marginTop="10dp"
@@ -327,6 +327,7 @@
             android:textSize="18sp"
             tools:ignore="HardcodedText" />
     </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
