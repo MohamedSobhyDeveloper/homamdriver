@@ -118,7 +118,8 @@
                 android:fontFamily="@font/rubikmedium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp" />
+                android:layout_marginLeft="15dp"
+                tools:ignore="RtlHardcoded" />
 
             <TextView
                 app:layout_constraintTop_toBottomOf="@+id/txt_welcom"
@@ -132,7 +133,8 @@
                 android:fontFamily="@font/rubikregular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp" />
+                android:layout_marginLeft="15dp"
+                tools:ignore="RtlHardcoded" />
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -164,7 +166,7 @@
                 android:layout_height="46dp"
                 android:padding="15dp"
                 android:paddingLeft="10dp"
-                tools:ignore="Autofill,RtlSymmetry,SmallSp,TextFields" />
+                tools:ignore="Autofill,RtlHardcoded,RtlSymmetry,SmallSp,TextFields" />
             </com.google.android.material.textfield.TextInputLayout>
             <TextView
                 app:layout_constraintTop_toBottomOf="@+id/input_email"
@@ -179,7 +181,8 @@
                 android:fontFamily="@font/rubikregular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp" />
+                android:layout_marginLeft="15dp"
+                tools:ignore="RtlHardcoded" />
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -215,7 +218,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
                     android:paddingLeft="10dp"
-                    tools:ignore="RtlSymmetry,SmallSp" />
+                    tools:ignore="RtlHardcoded,RtlSymmetry,SmallSp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

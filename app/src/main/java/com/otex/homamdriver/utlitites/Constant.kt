@@ -25,7 +25,7 @@ class Constant {
 
         //online
         @JvmField
-        var baseUrl = "https://www.flickr.com/"
+        var baseUrl = "http://homam.otextech.net/api/"
 
 
         fun getInstance(context: Context?): Constant? {

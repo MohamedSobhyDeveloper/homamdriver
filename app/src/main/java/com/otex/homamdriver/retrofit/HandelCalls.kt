@@ -38,8 +38,13 @@ class HandelCalls {
     fun call(flag: String, meMap: HashMap<String, String?>?, ShowLoadingDialog: Boolean, onRespnseSucess: HandleRetrofitResp) {
         onRespnse = onRespnseSucess
 
-        if (flag== DataEnum.moviephoto.name){
-            callRetrofit(restRetrofit!!.getClientService().getPhotos(meMap), flag, ShowLoadingDialog)
+        if (flag== DataEnum.login.name){
+            callRetrofit(restRetrofit!!.getClientService().login(meMap), flag, ShowLoadingDialog)
+
+        }else if(flag==DataEnum.home.name){
+
+            callRetrofit(restRetrofit!!.getClientService().homeDashBord(), flag, ShowLoadingDialog)
+
         }
 
     }

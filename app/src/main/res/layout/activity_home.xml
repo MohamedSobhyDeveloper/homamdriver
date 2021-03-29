@@ -295,7 +295,7 @@
         app:layout_constraintTop_toBottomOf="@+id/acceptedbtn"
         android:background="@drawable/round_button_orange"
         android:orientation="vertical"
-        android:visibility="visible"
+        android:visibility="gone"
         android:gravity="center"
         android:id="@+id/totalstoreubtn"
         android:layout_marginTop="10dp"

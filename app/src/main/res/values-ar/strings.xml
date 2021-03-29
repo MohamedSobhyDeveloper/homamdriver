@@ -26,4 +26,5 @@
     <string name="rejected">Rejected</string>
     <string name="enter_password">Enter Password</string>
     <string name="enter_email">Enter Email or Phone</string>
+    <string name="login_success">Login Success</string>
 </resources>
