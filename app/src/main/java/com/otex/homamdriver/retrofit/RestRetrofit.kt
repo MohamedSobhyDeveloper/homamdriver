@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit
 // end comment
 class RestRetrofit private constructor() {
     var apiKey = "api-key"
-    var Authorization = "authorization-token"
+    var Authorization = "Authorization"
     private val deviceKey = "device"
 
     private var deviceValue: String? = ""
