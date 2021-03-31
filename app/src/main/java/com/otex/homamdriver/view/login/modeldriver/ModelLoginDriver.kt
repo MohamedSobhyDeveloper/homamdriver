@@ -1,6 +1,6 @@
-package com.otex.homamdriver.view.login.model
+package com.otex.homamdriver.view.login.modeldriver
 
-data class ModelLogin(
+data class ModelLoginDriver(
     val driver: Driver,
     val expires_in: String,
     val token: String,

@@ -9,6 +9,7 @@ import androidx.core.view.ViewCompat.animate
 import com.daimajia.androidanimations.library.Techniques
 import com.daimajia.androidanimations.library.YoYo
 import com.otex.homamdriver.databinding.ActivityMainBinding
+import com.otex.homamdriver.utlitites.Constant
 import com.otex.homamdriver.view.login.LoginActivity
 import com.otex.homamuser.view.baseActivity.BaseActivity
 
@@ -39,14 +40,14 @@ class MainActivity : BaseActivity() {
     private fun click() {
         binding.btnStore.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
-            intent.putExtra("type", "store")
+            intent.putExtra("type", Constant.store)
             startActivity(intent)
             finish()
         }
 
         binding.btnDriver.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
-            intent.putExtra("type", "driver")
+            intent.putExtra("type", Constant.driver)
             startActivity(intent)
             finish()
         }

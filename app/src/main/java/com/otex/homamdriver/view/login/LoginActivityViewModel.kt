@@ -6,24 +6,35 @@ import androidx.lifecycle.ViewModel
 import com.otex.homamdriver.interfaces.HandleRetrofitResp
 import com.otex.homamdriver.retrofit.HandelCalls
 import com.otex.homamdriver.utlitites.DataEnum
-import com.otex.homamdriver.view.login.model.ModelLogin
+import com.otex.homamdriver.view.login.modeldriver.ModelLoginDriver
+import com.otex.homamrestaurant.view.login.model.ModelLoginRestaurant
 import java.util.HashMap
 
 class LoginActivityViewModel:ViewModel(),HandleRetrofitResp{
 
-    var loginLivedata = MutableLiveData<ModelLogin>()
+    var loginDriverLivedata = MutableLiveData<ModelLoginDriver>()
+    var loginRestaurantLivedata = MutableLiveData<ModelLoginRestaurant>()
 
 
-    fun makeLogin(context: Context, meMap: HashMap<String, String?>?){
+    fun makeLoginDriver(context: Context, meMap: HashMap<String, String?>?){
 
-        HandelCalls.getInstance(context)?.call(DataEnum.login.name, meMap, true, this)
+        HandelCalls.getInstance(context)?.call(DataEnum.loginDriver.name, meMap, true, this)
+
+    }
+
+    fun makeLoginRestaurant(context: Context, meMap: HashMap<String, String?>?){
+
+        HandelCalls.getInstance(context)?.call(DataEnum.loginRestaurant.name, meMap, true, this)
 
     }
 
     override fun onResponseSuccess(flag: String?, o: Any?) {
-        if(flag==DataEnum.login.name){
-            val modelLogin: ModelLogin = o as ModelLogin
-            loginLivedata.value = modelLogin
+        if(flag==DataEnum.loginDriver.name){
+            val modelLogin: ModelLoginDriver = o as ModelLoginDriver
+            loginDriverLivedata.value = modelLogin
+        }else if(flag==DataEnum.loginRestaurant.name){
+            val modelLoginRestaurant: ModelLoginRestaurant = o as ModelLoginRestaurant
+            loginRestaurantLivedata.value = modelLoginRestaurant
         }
     }
 

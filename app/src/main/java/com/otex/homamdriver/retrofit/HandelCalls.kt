@@ -38,12 +38,19 @@ class HandelCalls {
     fun call(flag: String, meMap: HashMap<String, String?>?, ShowLoadingDialog: Boolean, onRespnseSucess: HandleRetrofitResp) {
         onRespnse = onRespnseSucess
 
-        if (flag== DataEnum.login.name){
-            callRetrofit(restRetrofit!!.getClientService().login(meMap), flag, ShowLoadingDialog)
+        if (flag== DataEnum.loginDriver.name){
+            callRetrofit(restRetrofit!!.getClientService().loginDriver(meMap), flag, ShowLoadingDialog)
 
-        }else if(flag==DataEnum.home.name){
+        }else if(flag==DataEnum.loginRestaurant.name){
+            callRetrofit(restRetrofit!!.getClientService().loginRestaurant(meMap), flag, ShowLoadingDialog)
 
-            callRetrofit(restRetrofit!!.getClientService().homeDashBord(), flag, ShowLoadingDialog)
+        } else if(flag==DataEnum.homeDriver.name){
+
+            callRetrofit(restRetrofit!!.getClientService().homeDashBordDriver(), flag, ShowLoadingDialog)
+
+        }else if(flag==DataEnum.homeRestaurant.name){
+
+            callRetrofit(restRetrofit!!.getClientService().homeDashBordRestaurant(), flag, ShowLoadingDialog)
 
         }
 

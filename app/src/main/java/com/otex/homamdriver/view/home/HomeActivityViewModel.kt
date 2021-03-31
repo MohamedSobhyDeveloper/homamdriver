@@ -6,25 +6,33 @@ import androidx.lifecycle.ViewModel
 import com.otex.homamdriver.interfaces.HandleRetrofitResp
 import com.otex.homamdriver.retrofit.HandelCalls
 import com.otex.homamdriver.utlitites.DataEnum
-import com.otex.homamdriver.view.home.model.ModelHomeDashBord
-import com.otex.homamdriver.view.login.model.ModelLogin
-import java.util.HashMap
+import com.otex.homamdriver.view.home.modeldriver.ModelHomeDashBordDriver
+import com.otex.homamdriver.view.home.modelrestaurant.ModelHomeDashBordRestaurant
 
 class HomeActivityViewModel:ViewModel(),HandleRetrofitResp{
 
-    var homeLivedata = MutableLiveData<ModelHomeDashBord>()
+    var homeDriverLivedata = MutableLiveData<ModelHomeDashBordDriver>()
+    var homeRestaurantLivedata = MutableLiveData<ModelHomeDashBordRestaurant>()
 
 
-    fun getHomeDashbord(context: Context){
+    fun getHomeDriverDashbord(context: Context){
 
-        HandelCalls.getInstance(context)?.call(DataEnum.home.name, null, true, this)
+        HandelCalls.getInstance(context)?.call(DataEnum.homeDriver.name, null, true, this)
+
+    }
+    fun getHomeRestaurantDashbord(context: Context){
+
+        HandelCalls.getInstance(context)?.call(DataEnum.homeRestaurant.name, null, true, this)
 
     }
 
     override fun onResponseSuccess(flag: String?, o: Any?) {
-        if(flag==DataEnum.home.name){
-            val modelHomeDashBord: ModelHomeDashBord = o as ModelHomeDashBord
-            homeLivedata.value = modelHomeDashBord
+        if(flag==DataEnum.homeDriver.name){
+            val modelHomeDashBord: ModelHomeDashBordDriver = o as ModelHomeDashBordDriver
+            homeDriverLivedata.value = modelHomeDashBord
+        }else if(flag==DataEnum.homeRestaurant.name){
+            val modelHomeDashBordRestaurant: ModelHomeDashBordRestaurant = o as ModelHomeDashBordRestaurant
+            homeRestaurantLivedata.value = modelHomeDashBordRestaurant
         }
     }
 

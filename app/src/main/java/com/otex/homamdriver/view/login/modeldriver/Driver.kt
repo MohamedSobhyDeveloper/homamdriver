@@ -1,4 +1,4 @@
-package com.otex.homamdriver.view.login.model
+package com.otex.homamdriver.view.login.modeldriver
 
 data class Driver(
     val created_at: String,

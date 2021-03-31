@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.otex.homamdriver.R
 import com.otex.homamdriver.databinding.ActivityHomeBinding
+import com.otex.homamdriver.utlitites.Constant
 import com.otex.homamdriver.view.login.LoginActivityViewModel
 import com.otex.homamdriver.view.order.OrderActivity
 import com.otex.homamuser.view.baseActivity.BaseActivity
@@ -19,6 +20,8 @@ import com.otex.homamuser.view.baseActivity.BaseActivity
 class HomeActivity : BaseActivity() {
     lateinit var binding: ActivityHomeBinding
     private var homeActivityViewModel : HomeActivityViewModel? = null
+    var type:String=""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
@@ -33,7 +36,17 @@ class HomeActivity : BaseActivity() {
 
     private fun getHomeDashBord() {
 
-        homeActivityViewModel!!.getHomeDashbord(this)
+        type=intent.getStringExtra("type").toString()
+        if(type==Constant.store){
+            binding.totalstoreubtn.visibility=View.VISIBLE
+            homeActivityViewModel!!.getHomeRestaurantDashbord(this)
+
+        }else{
+            binding.totalstoreubtn.visibility=View.GONE
+            homeActivityViewModel!!.getHomeDriverDashbord(this)
+
+        }
+
 
     }
 
@@ -83,7 +96,28 @@ class HomeActivity : BaseActivity() {
     @SuppressLint("SetTextI18n")
     private fun initialize() {
         homeActivityViewModel = ViewModelProvider(this).get(HomeActivityViewModel::class.java)
-        homeActivityViewModel!!.homeLivedata.observe(this) {
+            observerHomeDriverDashBord()
+            observerHomeRestDashBord()
+
+
+
+    }
+
+    private fun observerHomeRestDashBord() {
+        homeActivityViewModel!!.homeRestaurantLivedata.observe(this) {
+
+            binding.orderCount.text=it.pending.toString() +" Order"
+            binding.deliveredCount.text=it.delivered.toString() +" Order"
+            binding.canceledCount.text=it.canceled.toString() +" Order"
+            binding.accptedCount.text=it.accepted.toString() +" Order"
+            binding.totalStoreCount.text=it.revenue.toString() +" Order"
+
+
+        }
+    }
+
+    private fun observerHomeDriverDashBord() {
+        homeActivityViewModel!!.homeDriverLivedata.observe(this) {
 
             binding.orderCount.text=it.pending.toString() +" Order"
             binding.deliveredCount.text=it.delivered.toString() +" Order"
@@ -92,6 +126,5 @@ class HomeActivity : BaseActivity() {
 
 
         }
-
     }
 }

@@ -1,6 +1,6 @@
-package com.otex.homamdriver.view.home.model
+package com.otex.homamdriver.view.home.modeldriver
 
-data class ModelHomeDashBord(
+data class ModelHomeDashBordDriver(
     val canceled: Int,
     val delivered: Int,
     val pending: Int,
