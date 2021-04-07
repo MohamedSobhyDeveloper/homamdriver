@@ -2,23 +2,20 @@ package com.otex.homamdriver.view.home
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.otex.homamdriver.R
 import com.otex.homamdriver.databinding.ActivityHomeBinding
 import com.otex.homamdriver.utlitites.Constant
-import com.otex.homamdriver.view.login.LoginActivityViewModel
 import com.otex.homamdriver.view.order.OrderActivity
+import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.view.baseActivity.BaseActivity
 
 @Suppress("DEPRECATION")
 class HomeActivity : BaseActivity() {
-    lateinit var binding: ActivityHomeBinding
+    private lateinit var binding: ActivityHomeBinding
     private var homeActivityViewModel : HomeActivityViewModel? = null
     var type:String=""
 
@@ -29,20 +26,25 @@ class HomeActivity : BaseActivity() {
 
 
         initialize()
-
         getHomeDashBord()
+
         click()
     }
 
     private fun getHomeDashBord() {
 
-        type=intent.getStringExtra("type").toString()
+        type= PrefsUtil.with(this).get("type","")!!
         if(type==Constant.store){
             binding.totalstoreubtn.visibility=View.VISIBLE
+            binding.acceptedbtn.visibility=View.VISIBLE
+            binding.totaldeliveryubtn.visibility=View.GONE
+
             homeActivityViewModel!!.getHomeRestaurantDashbord(this)
 
         }else{
             binding.totalstoreubtn.visibility=View.GONE
+            binding.acceptedbtn.visibility=View.GONE
+            binding.totaldeliveryubtn.visibility=View.VISIBLE
             homeActivityViewModel!!.getHomeDriverDashbord(this)
 
         }
@@ -56,7 +58,7 @@ class HomeActivity : BaseActivity() {
 
         binding.waitingbtn.setOnClickListener {
             val intent=Intent(this,OrderActivity::class.java)
-            intent.putExtra("type","waiting")
+            intent.putExtra("type","pending")
             startActivity(intent)
 
         }
@@ -99,30 +101,30 @@ class HomeActivity : BaseActivity() {
             observerHomeDriverDashBord()
             observerHomeRestDashBord()
 
-
-
     }
 
+    @SuppressLint("SetTextI18n")
     private fun observerHomeRestDashBord() {
         homeActivityViewModel!!.homeRestaurantLivedata.observe(this) {
 
-            binding.orderCount.text=it.pending.toString() +" Order"
-            binding.deliveredCount.text=it.delivered.toString() +" Order"
-            binding.canceledCount.text=it.canceled.toString() +" Order"
-            binding.accptedCount.text=it.accepted.toString() +" Order"
-            binding.totalStoreCount.text=it.revenue.toString() +" Order"
+            binding.orderCount.text=it.pending.toString() +" "+getString(R.string.order)
+            binding.deliveredCount.text=it.delivered.toString()+" "+getString(R.string.order)
+            binding.canceledCount.text=it.canceled.toString() +" "+getString(R.string.order)
+            binding.accptedCount.text=it.accepted.toString() +" "+getString(R.string.order)
+            binding.totalStoreCount.text=it.revenue.toString() +" "+getString(R.string.order)
 
 
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun observerHomeDriverDashBord() {
         homeActivityViewModel!!.homeDriverLivedata.observe(this) {
 
-            binding.orderCount.text=it.pending.toString() +" Order"
-            binding.deliveredCount.text=it.delivered.toString() +" Order"
-            binding.canceledCount.text=it.canceled.toString() +" Order"
-            binding.accptedCount.text=it.revenue.toString() +" Order"
+            binding.deliveredCount.text=it.delivered.toString() +" "+getString(R.string.order)
+            binding.orderCount.text=it.pending.toString() +" "+getString(R.string.order)
+            binding.canceledCount.text=it.canceled.toString() +" "+getString(R.string.order)
+            binding.totalDeliveryCount.text=it.revenue.toString() +" "+getString(R.string.order)
 
 
         }

@@ -52,7 +52,7 @@
         android:layout_marginBottom="10dp"
         android:layout_height="0dp"
         android:layout_width="match_parent"
-        xmlns:android="http://schemas.android.com/apk/res/android">
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content">
 
                 <com.mikhaellopez.circularimageview.CircularImageView
-                    android:id="@+id/img_food"
+                    android:id="@+id/img_rest"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     app:layout_constraintTop_toTopOf="parent"
@@ -87,7 +87,7 @@
 
 
                 <LinearLayout
-                    app:layout_constraintStart_toEndOf="@+id/img_food"
+                    app:layout_constraintStart_toEndOf="@+id/img_rest"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -112,7 +112,7 @@
 
                     <TextView
                         android:text="Happy Bones"
-                        android:id="@+id/order"
+                        android:id="@+id/res_name"
                         android:textSize="18sp"
                         android:fontFamily="@font/robotobold"
                         android:textColor="@color/black"
@@ -145,7 +145,6 @@
                 android:padding="20dp"
                 android:id="@+id/rec_order_cart"
                 android:visibility="visible"
-                tools:listitem="@layout/item_cart"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -217,13 +216,14 @@
                     android:textColor="@color/black"
                     android:layout_marginTop="10dp"
                     android:layout_width="0dp"
+                    android:visibility="gone"
                     android:layout_height="wrap_content"/>
 
                 <TextView
                     app:layout_constraintTop_toTopOf="@+id/txt_delivery"
                     app:layout_constraintBottom_toBottomOf="@+id/txt_delivery"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:text="75.00 X1"
+                    android:text="0"
                     android:id="@+id/txt_price_delivery"
                     android:textSize="15sp"
                     android:fontFamily="@font/robotoregular"
@@ -242,6 +242,7 @@
                     android:fontFamily="@font/robotoregular"
                     android:textColor="@color/eyecolor"
                     android:layout_marginEnd="10dp"
+                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:ignore="HardcodedText" />
@@ -311,7 +312,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/lin_typr_order"
+        android:id="@+id/accept_reject_order"
         android:orientation="horizontal"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"

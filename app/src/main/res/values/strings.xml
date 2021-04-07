@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HomamDriver</string>
+    <string name="app_name">Homam</string>
     <string name="login">Login</string>
     <string name="rotate">0</string>
     <string name="rotate0">180</string>
@@ -11,7 +11,7 @@
     <string name="forgot_password">Forgot Password?</string>
     <string name="home">Home</string>
     <string name="total_revenue">Total Revenue</string>
-    <string name="waiting_order">Waiting Order</string>
+    <string name="waiting_order">pending Order</string>
     <string name="delivered">Delivered</string>
     <string name="accepted_order">Accepted Order</string>
     <string name="canceled_order">Canceled Order</string>
@@ -26,4 +26,9 @@
     <string name="enter_password">Enter Password</string>
     <string name="enter_email">Enter Email or Phone</string>
     <string name="login_success">Login Success</string>
+    <string name="order">Order</string>
+    <string name="no_orders_found">No Orders Found</string>
+    <string name="orders">orders</string>
+    <string name="dished">dishes</string>
+    <string name="le">L.E</string>
 </resources>

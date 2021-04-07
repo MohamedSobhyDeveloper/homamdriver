@@ -64,6 +64,7 @@ dependencies {
     implementation 'com.mikhaellopez:circularimageview:4.2.0'
 
     implementation 'com.daimajia.androidanimations:library:2.4@aar'
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
 
 

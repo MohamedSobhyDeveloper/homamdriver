@@ -1,22 +1,22 @@
 package com.otex.homamdriver.view.order
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.otex.homamdriver.R
 import com.otex.homamdriver.databinding.ActivityOrderBinding
-import com.otex.homamdriver.view.home.HomeActivity
+import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.view.baseActivity.BaseActivity
-import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.MyOrderListAdapter
+import com.otex.homamdriver.view.order.adapter.MyOrderListAdapter
+import java.util.HashMap
 
 class OrderActivity : BaseActivity() {
     lateinit var binding: ActivityOrderBinding
     private var orderActivityViewModel : OrderActivityViewModel? = null
-    var type:String=""
+    var status:String=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityOrderBinding.inflate(layoutInflater)
@@ -31,8 +31,10 @@ class OrderActivity : BaseActivity() {
     }
 
     private fun getOrders() {
-
-        orderActivityViewModel?.getOrders()
+        val map = HashMap<String, String?>()
+         map.put("type", PrefsUtil.with(this).get("type","")!!)
+        map.put("status",status)
+        orderActivityViewModel?.getOrders(this,map)
 
     }
 
@@ -47,17 +49,17 @@ class OrderActivity : BaseActivity() {
 
     private fun initialize() {
 
-         type=intent.getStringExtra("type").toString()
+        status=intent.getStringExtra("type").toString()
 
-        if (type.equals("waiting")){
+        if (status.equals("pending")){
             binding.orderTypeTv.text=getString(R.string.waiting_order)
-        }else if (type.equals("delivered")){
+        }else if (status.equals("delivered")){
             binding.orderTypeTv.text=getString(R.string.delivered)
 
-        }else if (type.equals("accepted")){
+        }else if (status.equals("accepted")){
             binding.orderTypeTv.text=getString(R.string.accepted_order)
 
-        }else if (type.equals("canceled")){
+        }else if (status.equals("canceled")){
             binding.orderTypeTv.text=getString(R.string.canceled_order)
 
         }else{
@@ -67,15 +69,22 @@ class OrderActivity : BaseActivity() {
 
         orderActivityViewModel = ViewModelProvider(this).get(OrderActivityViewModel::class.java)
 
-        orderActivityViewModel!!.myOrderViewModel.observe(this) {
 
-            val layoutManager = LinearLayoutManager(this)
-            binding.recOrder.layoutManager = layoutManager
-            val adapter =
-                MyOrderListAdapter(this,null, type!!)
-            binding.recOrder.adapter = adapter
+        orderActivityViewModel!!.myOrderViewModel.observe(this, Observer {
+            if (it.data.isNotEmpty()){
+                binding.noOrder.visibility= View.GONE
 
-        }
+                val layoutManager = LinearLayoutManager(this)
+                binding.recOrder.layoutManager = layoutManager
+                val adapter =
+                    MyOrderListAdapter(this,it.data, status)
+                binding.recOrder.adapter = adapter
+            }else{
+                binding.noOrder.visibility= View.VISIBLE
+            }
+        })
+
+
     }
 
     override fun onBackPressed() {

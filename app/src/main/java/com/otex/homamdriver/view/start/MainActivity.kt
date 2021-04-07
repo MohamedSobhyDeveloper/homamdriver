@@ -11,6 +11,7 @@ import com.daimajia.androidanimations.library.YoYo
 import com.otex.homamdriver.databinding.ActivityMainBinding
 import com.otex.homamdriver.utlitites.Constant
 import com.otex.homamdriver.view.login.LoginActivity
+import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.view.baseActivity.BaseActivity
 
 
@@ -40,6 +41,7 @@ class MainActivity : BaseActivity() {
     private fun click() {
         binding.btnStore.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
+            PrefsUtil.with(this).add("type",Constant.store).apply()
             intent.putExtra("type", Constant.store)
             startActivity(intent)
             finish()
@@ -47,6 +49,7 @@ class MainActivity : BaseActivity() {
 
         binding.btnDriver.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
+            PrefsUtil.with(this).add("type",Constant.driver).apply()
             intent.putExtra("type", Constant.driver)
             startActivity(intent)
             finish()

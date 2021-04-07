@@ -52,6 +52,16 @@ class HandelCalls {
 
             callRetrofit(restRetrofit!!.getClientService().homeDashBordRestaurant(), flag, ShowLoadingDialog)
 
+        }else if(flag==DataEnum.order.name){
+            val status=meMap?.get("status")
+            val type=meMap?.get("type")
+            callRetrofit(restRetrofit!!.getClientService().getOrder(status!!, type!!), flag, ShowLoadingDialog)
+
+        }else if(flag==DataEnum.orderdetails.name){
+            val order_id=meMap?.get("order_id")
+            val type=meMap?.get("type")
+            callRetrofit(restRetrofit!!.getClientService().getOrderDetails(order_id!!, type!!), flag, ShowLoadingDialog)
+
         }
 
     }
@@ -75,7 +85,6 @@ class HandelCalls {
                         if (onRespnse != null) Log.d("testing", "onResponse() minma called with: call = [$call], response = [$response]")
                         onRespnse!!.onResponseSuccess(flag, response.body())
                     }
-                    // TODO - 4 Add 400 to condition base on (Login Response)
                 } else if (response.code() == 400 || response.code() == 401) {
                     Log.e("res1", "resp")
                     if (onRespnse != null) {
