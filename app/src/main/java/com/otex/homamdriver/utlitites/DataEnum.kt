@@ -6,6 +6,7 @@ package com.otex.homamdriver.utlitites
 enum class DataEnum {
     shversionName,
     loginDriver,loginRestaurant,
-    homeDriver, homeRestaurant,order,orderdetails
+    homeDriver, homeRestaurant,order,orderdetails,
+    confirmdriver,confirmrest
 
 }

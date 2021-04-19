@@ -5,6 +5,7 @@ import com.otex.homamdriver.view.home.modelrestaurant.ModelHomeDashBordRestauran
 import com.otex.homamdriver.view.login.modeldriver.ModelLoginDriver
 import com.otex.homamdriver.view.order.model.ModelOrder
 import com.otex.homamdriver.view.orderdetails.model.ModelOrderDetails
+import com.otex.homamdriver.view.orderdetails.modelaccept.ModelAccept
 import com.otex.homamrestaurant.view.login.model.ModelLoginRestaurant
 import retrofit2.Call
 import retrofit2.http.*
@@ -36,5 +37,12 @@ interface ApiCall {
     @GET("{type}/orders/{order_id}")
     fun getOrderDetails(@Path("order_id") order_id:String,@Path("type") type:String): Call<ModelOrderDetails?>?
 
+    @POST("driver/confirm-order/{order_id}")
+    fun confirmOrderDriver(@Path("order_id") order_id:String): Call<ModelAccept?>?
+
+
+
+    @POST("restaurant/orders/{order_id}/confirm-order/{status}")
+    fun confirmOrderRest(@Path("order_id") order_id:String,@Path("status") status:String): Call<ModelAccept?>?
 
 }

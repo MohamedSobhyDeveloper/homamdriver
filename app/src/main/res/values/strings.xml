@@ -31,4 +31,5 @@
     <string name="orders">orders</string>
     <string name="dished">dishes</string>
     <string name="le">L.E</string>
+    <string name="ordercofirm">order confirmed</string>
 </resources>

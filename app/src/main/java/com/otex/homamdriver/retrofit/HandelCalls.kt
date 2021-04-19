@@ -62,7 +62,19 @@ class HandelCalls {
             val type=meMap?.get("type")
             callRetrofit(restRetrofit!!.getClientService().getOrderDetails(order_id!!, type!!), flag, ShowLoadingDialog)
 
+        }else if(flag==DataEnum.confirmdriver.name){
+            val order_id=meMap?.get("order_id")
+            val type=meMap?.get("type")
+            callRetrofit(restRetrofit!!.getClientService().confirmOrderDriver(order_id!!), flag, ShowLoadingDialog)
+
+        }else if(flag==DataEnum.confirmrest.name){
+            val order_id=meMap?.get("order_id")
+            val status=meMap?.get("status")
+            callRetrofit(restRetrofit!!.getClientService().confirmOrderRest(order_id!!, status!!), flag, ShowLoadingDialog)
+
         }
+
+
 
     }
 

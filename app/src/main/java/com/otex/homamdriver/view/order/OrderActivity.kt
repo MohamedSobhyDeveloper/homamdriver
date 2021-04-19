@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.otex.homamdriver.R
 import com.otex.homamdriver.databinding.ActivityOrderBinding
+import com.otex.homamdriver.utlitites.Constant
 import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamdriver.view.order.adapter.MyOrderListAdapter
@@ -17,6 +18,7 @@ class OrderActivity : BaseActivity() {
     lateinit var binding: ActivityOrderBinding
     private var orderActivityViewModel : OrderActivityViewModel? = null
     var status:String=""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityOrderBinding.inflate(layoutInflater)
@@ -31,9 +33,9 @@ class OrderActivity : BaseActivity() {
     }
 
     private fun getOrders() {
-        val map = HashMap<String, String?>()
+         val map = HashMap<String, String?>()
          map.put("type", PrefsUtil.with(this).get("type","")!!)
-        map.put("status",status)
+         map.put("status",status)
         orderActivityViewModel?.getOrders(this,map)
 
     }
@@ -50,6 +52,7 @@ class OrderActivity : BaseActivity() {
     private fun initialize() {
 
         status=intent.getStringExtra("type").toString()
+
 
         if (status.equals("pending")){
             binding.orderTypeTv.text=getString(R.string.waiting_order)
@@ -86,6 +89,7 @@ class OrderActivity : BaseActivity() {
 
 
     }
+
 
     override fun onBackPressed() {
         super.onBackPressed()
