@@ -314,7 +314,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/accept_reject_order"
         android:orientation="horizontal"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
