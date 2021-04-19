@@ -25,7 +25,7 @@ class Constant {
 
         //online
         @JvmField
-        var baseUrl = "http://homam.otextech.net/api/"
+        var baseUrl = "http://homam-ly.com/api/"
 
         var store="restaurant"
         var driver="driver"

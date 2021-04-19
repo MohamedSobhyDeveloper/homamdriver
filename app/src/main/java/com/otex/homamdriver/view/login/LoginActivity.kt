@@ -71,7 +71,7 @@ class LoginActivity : BaseActivity() {
     private fun login(emailOrPhone: String, password: String, type: String) {
 
         val map = HashMap<String, String?>()
-        map.put("email",emailOrPhone)
+        map.put("phone",emailOrPhone)
         map.put("password",password)
         if(type==Constant.store){
             loginviewmodel!!.makeLoginRestaurant(this, map)

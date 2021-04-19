@@ -6,7 +6,7 @@
     <string name="rotate0">180</string>
     <string name="welcome">مرحبا</string>
     <string name="please_login_or_sign_up_to_continue_using_our_app">يرجى تسجيل الدخول أو الاشتراك لمواصلة استخدام التطبيق لدينا</string>
-    <string name="email_phonenumber">البريد الإلكتروني / رقم الهاتف</string>
+    <string name="email_phonenumber"> رقم الهاتف</string>
     <string name="please_check_your_email_and_try_again">يرجى التحقق من بريدك الإلكتروني وحاول مرة أخرى.</string>
     <string name="password">كلمه السر</string>
     <string name="forgot_password">هل نسيت كلمة السر؟</string>
