@@ -14,9 +14,10 @@
         android:theme="@style/Theme.Homamdriver"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,UnusedAttribute">
+        <activity android:name=".view.home.homedriver.HomeDriverActivity"></activity>
         <activity android:name=".view.orderdetails.OrderDetailsActivity" />
         <activity android:name=".view.order.OrderActivity" />
-        <activity android:name=".view.home.HomeActivity" />
+        <activity android:name=".view.home.homerestaurant.HomeActivity" />
         <activity android:name=".view.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,10 +26,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.login.LoginActivity" />
-        <activity android:name=".view.start.MainActivity">
-
-
-        </activity>
+        <activity android:name=".view.start.MainActivity"></activity>
     </application>
 
 </manifest>

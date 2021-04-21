@@ -8,6 +8,8 @@ data class ModelHomeDashBordRestaurant(
     val canceled: Int,
     val delivered: Int,
     val pending: Int,
-    val revenue: Int
+    val revenue: Int,
+    val working_on: Int,
+    val ready_for_delivery: Int
 
 )

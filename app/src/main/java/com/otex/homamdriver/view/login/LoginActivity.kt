@@ -8,7 +8,8 @@ import androidx.lifecycle.observe
 import com.otex.homamdriver.R
 import com.otex.homamdriver.databinding.ActivityLoginBinding
 import com.otex.homamdriver.utlitites.Constant
-import com.otex.homamdriver.view.home.HomeActivity
+import com.otex.homamdriver.view.home.homedriver.HomeDriverActivity
+import com.otex.homamdriver.view.home.homerestaurant.HomeActivity
 import com.otex.homamdriver.view.login.modeldriver.ModelLoginDriver
 import com.otex.homamdriver.view.start.MainActivity
 import com.otex.homamrestaurant.view.login.model.ModelLoginRestaurant
@@ -37,6 +38,7 @@ class LoginActivity : BaseActivity() {
 
     private fun click() {
          type= intent.getStringExtra("type").toString()
+
         binding.backbtn.setOnClickListener {
             startActivity(Intent(this,MainActivity::class.java))
             finish()
@@ -99,11 +101,20 @@ class LoginActivity : BaseActivity() {
         loginviewmodel!!.loginDriverLivedata.observe(this) {
 
             saveDataInShared(it)
-            Toast.makeText(this,getString(R.string.login_success), Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, HomeActivity::class.java)
-            intent.putExtra("type",type)
-            startActivity(intent)
-            finish()
+            if(type==Constant.store){
+                Toast.makeText(this,getString(R.string.login_success), Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, HomeActivity::class.java)
+                intent.putExtra("type",type)
+                startActivity(intent)
+                finish()
+            }else{
+
+                Toast.makeText(this,getString(R.string.login_success), Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, HomeDriverActivity::class.java)
+                intent.putExtra("type",type)
+                startActivity(intent)
+                finish()            }
+
         }
 
     }
@@ -112,11 +123,22 @@ class LoginActivity : BaseActivity() {
         loginviewmodel!!.loginRestaurantLivedata.observe(this) {
 
             saveDataInShared(it)
-            Toast.makeText(this,getString(R.string.login_success), Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, HomeActivity::class.java)
-            intent.putExtra("type",type)
-            startActivity(intent)
-            finish()
+            if(type==Constant.store){
+                Toast.makeText(this,getString(R.string.login_success), Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, HomeActivity::class.java)
+                intent.putExtra("type",type)
+                startActivity(intent)
+                finish()
+            }else{
+
+                Toast.makeText(this,getString(R.string.login_success), Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, HomeDriverActivity::class.java)
+                intent.putExtra("type",type)
+                startActivity(intent)
+                finish()
+            }
+
+
         }
     }
 

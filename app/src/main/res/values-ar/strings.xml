@@ -3,7 +3,7 @@
     <string name="app_name">Homam</string>
     <string name="login">تسجيل الدخول</string>
     <string name="rotate">180</string>
-    <string name="rotate0">180</string>
+    <string name="rotate0">0</string>
     <string name="welcome">مرحبا</string>
     <string name="please_login_or_sign_up_to_continue_using_our_app">يرجى تسجيل الدخول أو الاشتراك لمواصلة استخدام التطبيق لدينا</string>
     <string name="email_phonenumber"> رقم الهاتف</string>
@@ -33,4 +33,8 @@
     <string name="dished">اطباق</string>
     <string name="le">ج.م</string>
     <string name="ordercofirm">تم تأكيد الطلب</string>
+    <string name="working_on">طلب في التجهيز</string>
+    <string name="ready_for_delivery">جاهز للتوصيل</string>
+    <string name="on_delivery">في التوصيل</string>
+    <string name="log_out">تسجيل الخروج</string>
 </resources>

@@ -32,4 +32,8 @@
     <string name="dished">dishes</string>
     <string name="le">L.E</string>
     <string name="ordercofirm">order confirmed</string>
+    <string name="working_on">Working On</string>
+    <string name="ready_for_delivery">ready for delivery</string>
+    <string name="on_delivery">On delivery</string>
+    <string name="log_out">Log out</string>
 </resources>
