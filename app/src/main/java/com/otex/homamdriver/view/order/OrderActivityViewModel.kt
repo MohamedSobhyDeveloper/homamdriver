@@ -12,17 +12,26 @@ import java.util.HashMap
 class OrderActivityViewModel:ViewModel(), HandleRetrofitResp {
 
     var myOrderViewModel = MutableLiveData<ModelOrder>()
+    var urlPaginationLiveData = MutableLiveData<ModelOrder>()
 
     fun getOrders(context: Context, meMap: HashMap<String, String?>?){
         HandelCalls.getInstance(context)?.call(DataEnum.order.name, meMap, true, this)
 
     }
 
+    fun getUrlPagination(context: Context, meMap: HashMap<String, String?>?){
+        HandelCalls.getInstance(context)?.call(DataEnum.URLpagination.name, meMap, true, this)
+    }
+
+
     override fun onResponseSuccess(flag: String?, o: Any?) {
         if(flag== DataEnum.order.name){
             val modelorder: ModelOrder = o as ModelOrder
             myOrderViewModel.postValue(modelorder)
 
+        }else if(flag==DataEnum.URLpagination.name){
+            val modelorder: ModelOrder = o as ModelOrder
+            urlPaginationLiveData.setValue(modelorder)
         }
     }
 

@@ -37,4 +37,8 @@
     <string name="ready_for_delivery">جاهز للتوصيل</string>
     <string name="on_delivery">في التوصيل</string>
     <string name="log_out">تسجيل الخروج</string>
+    <string name="start_work_on">البدء فى التجهيز</string>
+    <string name="order_canceled">تم الغاء الطلب</string>
+    <string name="order_delivered">تم التوصيل بنجاح</string>
+    <string name="order_picked">لقد قمت باستلام الطلب</string>
 </resources>

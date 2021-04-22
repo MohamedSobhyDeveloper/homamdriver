@@ -36,4 +36,8 @@
     <string name="ready_for_delivery">ready for delivery</string>
     <string name="on_delivery">On delivery</string>
     <string name="log_out">Log out</string>
+    <string name="start_work_on">Start Work on</string>
+    <string name="order_canceled">Order Canceled</string>
+    <string name="order_delivered">Order Delivered Successfully</string>
+    <string name="order_picked">Order Picked Successfully</string>
 </resources>

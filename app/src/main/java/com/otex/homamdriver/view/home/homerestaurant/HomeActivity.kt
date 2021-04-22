@@ -9,10 +9,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.otex.homamdriver.R
 import com.otex.homamdriver.databinding.ActivityHomeBinding
-import com.otex.homamdriver.utlitites.Constant
 import com.otex.homamdriver.view.home.HomeActivityViewModel
 import com.otex.homamdriver.view.login.LoginActivity
 import com.otex.homamdriver.view.order.OrderActivity
+import com.otex.homamdriver.view.start.MainActivity
 import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.view.baseActivity.BaseActivity
 import java.util.*
@@ -28,11 +28,17 @@ class HomeActivity : BaseActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         initialize()
-        getHomeDashBord()
         setuptoolbar()
         click()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+
+        getHomeDashBord()
+
     }
 
     private fun setuptoolbar() {
@@ -54,7 +60,7 @@ class HomeActivity : BaseActivity() {
 
     private fun getHomeDashBord() {
 
-        type= PrefsUtil.with(this).get("type","")!!
+                type= PrefsUtil.with(this).get("type","")!!
 
             homeActivityViewModel!!.getHomeRestaurantDashbord(this)
 
@@ -73,7 +79,7 @@ class HomeActivity : BaseActivity() {
 
         binding.deliveredbtn.setOnClickListener {
             val intent=Intent(this,OrderActivity::class.java)
-            intent.putExtra("type","delivered")
+            intent.putExtra("type","completed")
             startActivity(intent)
         }
 
@@ -104,7 +110,7 @@ class HomeActivity : BaseActivity() {
 
         binding.drawer.logout.setOnClickListener {
             PrefsUtil.with(this).add("token","").apply()
-            val intent =Intent(this, LoginActivity::class.java)
+            val intent =Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -134,5 +140,12 @@ class HomeActivity : BaseActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
+    }
 
 }

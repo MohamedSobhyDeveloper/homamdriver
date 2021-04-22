@@ -72,6 +72,19 @@ class HandelCalls {
             val status=meMap?.get("status")
             callRetrofit(restRetrofit!!.getClientService().confirmOrderRest(order_id!!, status!!), flag, ShowLoadingDialog)
 
+        }else if(flag==DataEnum.URLpagination.name){
+            val url=meMap?.get("url")
+
+            callRetrofit(restRetrofit?.getClientService()?.getURL(url), flag, ShowLoadingDialog)
+
+        }else if(flag==DataEnum.changeStatus.name){
+            val order_id=meMap?.get("order_id")
+            val status=meMap?.get("status")
+            callRetrofit(restRetrofit!!.getClientService().changeStatusRes(order_id!!, status!!), flag, ShowLoadingDialog)
+
+        }else if(flag==DataEnum.pickOrder.name){
+            val order_id=meMap?.get("order_id")
+            callRetrofit(restRetrofit!!.getClientService().pickOrderDriver(order_id!!), flag, ShowLoadingDialog)
         }
 
 
@@ -97,7 +110,7 @@ class HandelCalls {
                         if (onRespnse != null) Log.d("testing", "onResponse() minma called with: call = [$call], response = [$response]")
                         onRespnse!!.onResponseSuccess(flag, response.body())
                     }
-                } else if (response.code() == 400 || response.code() == 401) {
+                } else if (response.code() == 400 || response.code() == 401 || response.code() == 300) {
                     Log.e("res1", "resp")
                     if (onRespnse != null) {
                         Log.e("res2", "resp")
@@ -107,7 +120,23 @@ class HandelCalls {
                             // onRespnse.onBadRequest(flag, response.errorBody().string());
                             // Log.e("resp",response.errorBody().string());
                             val o = JSONObject(response.errorBody()!!.string())
-                            Toasty.error(context!!, o.getJSONObject("status").getString("message"), Toast.LENGTH_SHORT, true).show()
+                            if (o.has("message")){
+                                val message=o.getString("message")
+                                if (message.isNotEmpty()){
+                                    Toasty.error(context!!, message, Toast.LENGTH_SHORT, true).show()
+                                }
+                            }else{
+                                if (o.has("error")){
+                                    val error=o.getString("error")
+
+                                    if (error.isNotEmpty()){
+                                        Toasty.error(context!!, error, Toast.LENGTH_SHORT, true).show()
+
+                                    }
+                                }
+                            }
+
+
 
                             onRespnse!!.onBadRequest(flag, response.errorBody()!!.string())
 

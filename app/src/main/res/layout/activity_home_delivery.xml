@@ -6,47 +6,43 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.home.homerestaurant.HomeActivity">
 
-    <LinearLayout
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/toolbar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:elevation="20dp"
-        android:orientation="horizontal"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="10dp"
-        tools:ignore="UnusedAttribute,UseCompoundDrawables">
+        android:background="@color/white">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/back"
-            android:padding="10dp"
-            android:layout_gravity="center"
-            android:id="@+id/backbtn"
-            android:rotation="@string/rotate"
-            android:visibility="gone"
-            tools:ignore="ContentDescription"
-            app:tint="@color/black" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:text="@string/home"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:fontFamily="@font/robotobold"
-            android:textSize="17sp"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/white">
 
-            />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/home"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:fontFamily="@font/robotobold"
+                android:textColor="@color/black"
+                />
 
 
-    </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+
+
 
     <androidx.core.widget.NestedScrollView
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
@@ -104,7 +100,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="3 Order"
+                    android:text="0 Order"
                     android:textColor="@color/white"
                     android:id="@+id/order_count"
                     android:layout_marginTop="10dp"
@@ -146,7 +142,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="3 Order"
+                    android:text="0 Order"
                     android:textColor="@color/white"
                     android:id="@+id/delivered_count"
                     android:layout_marginTop="10dp"
@@ -234,7 +230,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="3 Order"
+                    android:text="0"
                     android:textColor="@color/white"
                     android:id="@+id/total_delivery_count"
                     android:layout_marginTop="10dp"
@@ -279,7 +275,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="3 Order"
+                    android:text="0 Order"
                     android:textColor="@color/white"
                     android:id="@+id/ondelivery_count"
                     android:layout_marginTop="10dp"
@@ -412,5 +408,11 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <include layout="@layout/xml_drawer"
+            android:id="@+id/drawer"/>
+
+    </androidx.drawerlayout.widget.DrawerLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

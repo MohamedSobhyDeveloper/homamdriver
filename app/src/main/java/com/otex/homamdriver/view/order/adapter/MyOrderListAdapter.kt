@@ -21,8 +21,6 @@ class MyOrderListAdapter(private val context: Context, val list: List<Data>,
     : RecyclerView.Adapter<MyOrderListAdapter.MyViewHolder>() {
 
 
-
-
     @SuppressLint("SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -30,7 +28,7 @@ class MyOrderListAdapter(private val context: Context, val list: List<Data>,
         if (status.equals("pending")){
             holder.binding.orderStatus.text=context.getString(R.string.waiting_order)
             holder.binding.orderStatus.setTextColor(context.getColor(R.color.waitcolor))
-        }else if (status.equals("delivered")){
+        }else if (status.equals("completed")){
             holder.binding.orderStatus.text=context.getString(R.string.delivered)
             holder.binding.orderStatus.setTextColor(context.getColor(R.color.delivercolor))
         }else if (status.equals("accepted")){
@@ -39,6 +37,15 @@ class MyOrderListAdapter(private val context: Context, val list: List<Data>,
         }else if (status.equals("canceled")){
             holder.binding.orderStatus.text=context.getString(R.string.canceled_order)
             holder.binding.orderStatus.setTextColor(context.getColor(R.color.cancelcolor))
+        }else if (status.equals("working_on")){
+            holder.binding.orderStatus.text=context.getString(R.string.working_on)
+            holder.binding.orderStatus.setTextColor(context.getColor(R.color.acceptedcolor))
+        }else if (status.equals("ready_for_delivery")){
+            holder.binding.orderStatus.text=context.getString(R.string.ready_for_delivery)
+            holder.binding.orderStatus.setTextColor(context.getColor(R.color.acceptedcolor))
+        }else if (status.equals("on_delivery")){
+            holder.binding.orderStatus.text=context.getString(R.string.on_delivery)
+            holder.binding.orderStatus.setTextColor(context.getColor(R.color.acceptedcolor))
         }
 
         holder.binding.orderName.text=list[position].restaurant
@@ -66,7 +73,7 @@ class MyOrderListAdapter(private val context: Context, val list: List<Data>,
 
 
 
-    fun addList(list: MutableList<Data>) {
+    fun addList(list: List<Data>) {
 
         this.list.toMutableList().addAll(list)
         notifyDataSetChanged()

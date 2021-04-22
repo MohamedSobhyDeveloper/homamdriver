@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.otex.homamdriver.R
 import com.otex.homamdriver.databinding.ActivityOrderDetailsBinding
 import com.otex.homamdriver.utlitites.Constant
-import com.otex.homamdriver.utlitites.HelpMe
 
 import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.view.baseActivity.BaseActivity
@@ -24,6 +23,8 @@ class OrderDetailsActivity : BaseActivity() {
     private var orderDetailsViewModel : OrderDetailsViewModel? = null
     var status:String=""
     var type:String=""
+    var click:String=""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityOrderDetailsBinding.inflate(layoutInflater)
@@ -51,6 +52,28 @@ class OrderDetailsActivity : BaseActivity() {
             acceptOrder(type,"0")
 
         }
+
+        binding.btnWorkon.setOnClickListener {
+            click="working_on"
+            val map = HashMap<String, String?>()
+            map.put("status","working_on")
+            map.put("order_id",intent.getStringExtra("order_id"))
+            orderDetailsViewModel?.changeStatusRestaurant(this,map)
+        }
+
+        binding.btnReadydelivery.setOnClickListener {
+            click="ready_for_delivery"
+            val map = HashMap<String, String?>()
+            map.put("status","ready_for_delivery")
+            map.put("order_id",intent.getStringExtra("order_id"))
+            orderDetailsViewModel?.changeStatusRestaurant(this,map)
+        }
+
+        binding.btnDelivered.setOnClickListener {
+            val map = HashMap<String, String?>()
+            map.put("order_id",intent.getStringExtra("order_id"))
+            orderDetailsViewModel?.confirmOrderDriver(this,map)
+        }
     }
 
     private fun acceptOrder(type: String, s: String) {
@@ -62,7 +85,6 @@ class OrderDetailsActivity : BaseActivity() {
             orderDetailsViewModel?.confirmOrderRestaurant(this,map)
         }else{
             val map = HashMap<String, String?>()
-            // map.put("status",s)
             map.put("order_id",intent.getStringExtra("order_id"))
             orderDetailsViewModel?.confirmOrderDriver(this,map)
         }
@@ -76,35 +98,63 @@ class OrderDetailsActivity : BaseActivity() {
 
 
         if(status.equals("pending")){
-            confirm_Or_Reject(type)
+            confirm_Or_Reject(type,status)
             binding.txtType.text=getString(R.string.waiting_order)
             binding.txtType.visibility=View.GONE
             binding.acceptRejectOrder.visibility=View.VISIBLE
             binding.txtType.setTextColor(getColor(R.color.waitcolor))
-        }else if(status.equals("delivered")){
+        }else if(status.equals("completed")){
             binding.txtType.text=getString(R.string.delivered)
             binding.txtType.setTextColor(getColor(R.color.delivercolor))
         }else if(status.equals("accepted")){
+            confirm_Or_Reject(type,status)
             binding.txtType.text=getString(R.string.accepted_order)
             binding.txtType.setTextColor(getColor(R.color.acceptedcolor))
         }else if(status.equals("canceled")){
             binding.txtType.text=getString(R.string.canceled_order)
             binding.txtType.setTextColor(getColor(R.color.cancelcolor))
+        }else if (status.equals("working_on")){
+            confirm_Or_Reject(type,status)
+            binding.txtType.text=getString(R.string.working_on)
+            binding.txtType.setTextColor(getColor(R.color.acceptedcolor))
+
+        }else if (status.equals("ready_for_delivery")){
+
+            binding.txtType.text=getString(R.string.ready_for_delivery)
+            binding.txtType.setTextColor(getColor(R.color.acceptedcolor))
+
+        }else if (status.equals("on_delivery")){
+            confirm_Or_Reject(type,status)
+
+            binding.txtType.text=getString(R.string.on_delivery)
+            binding.txtType.setTextColor(getColor(R.color.acceptedcolor))
+
         }
 
 
 
     }
 
-    private fun confirm_Or_Reject(type: String) {
+    private fun confirm_Or_Reject(type: String,status:String) {
 
-        if(type==Constant.driver){
-            binding.btnAccepted.visibility=View.VISIBLE
-            binding.btnRejected.visibility=View.GONE
-        }else{
-            binding.btnAccepted.visibility=View.VISIBLE
-            binding.btnRejected.visibility=View.VISIBLE
-        }
+        if(status.equals("pending")){
+
+            if(type==Constant.driver){
+                binding.btnAccepted.visibility=View.VISIBLE
+                binding.btnRejected.visibility=View.GONE
+            }else{
+                binding.btnAccepted.visibility=View.VISIBLE
+                binding.btnRejected.visibility=View.VISIBLE
+            }
+        }else if(status.equals("accepted")){
+            binding.btnWorkon.visibility=View.VISIBLE
+        }else if(status.equals("working_on")){
+            binding.btnReadydelivery.visibility=View.VISIBLE
+       }else if(status.equals("on_delivery")){
+            binding.btnDelivered.visibility=View.VISIBLE
+            }
+
+
 
     }
 
@@ -128,12 +178,46 @@ class OrderDetailsActivity : BaseActivity() {
 
         orderDetailsViewModel!!.confirmOrderDriverlivedata.observe(this) {
 
+            if (it.status==1){
+                Toasty.success(this, getString(R.string.order_delivered), Toast.LENGTH_SHORT, true).show()
+                finish()
+            }
+
+        }
+
+        orderDetailsViewModel!!.confirmOrderDriverlivedata.observe(this) {
+
+            if (it.status==1){
+                Toasty.success(this, getString(R.string.order_picked), Toast.LENGTH_SHORT, true).show()
+                finish()
+            }
 
         }
         orderDetailsViewModel!!.confirmOrderRestlivedata.observe(this) {
 
             if(it.status==1){
-//                Toasty.success(this, getString(R.string.ordercofirm), Toast.LENGTH_SHORT, true).show()
+                if (it.order.order_status.equals("1")){
+                   Toasty.success(this, getString(R.string.ordercofirm), Toast.LENGTH_SHORT, true).show()
+
+                }else{
+                   Toasty.success(this, getString(R.string.order_canceled), Toast.LENGTH_SHORT, true).show()
+                }
+                finish()
+            }
+
+
+        }
+
+
+        orderDetailsViewModel!!.changeStatusLiveData.observe(this) {
+
+            if(it.status==1){
+                if (click.equals("working_on")){
+                    Toasty.success(this, getString(R.string.start_work_on), Toast.LENGTH_SHORT, true).show()
+
+                }else{
+                    Toasty.success(this, getString(R.string.ready_for_delivery), Toast.LENGTH_SHORT, true).show()
+                }
                 finish()
             }
 

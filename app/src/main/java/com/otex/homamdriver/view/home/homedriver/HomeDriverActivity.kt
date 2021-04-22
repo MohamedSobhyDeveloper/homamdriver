@@ -4,15 +4,17 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.core.view.GravityCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.otex.homamdriver.R
-import com.otex.homamdriver.databinding.ActivityHomeBinding
 import com.otex.homamdriver.databinding.ActivityHomeDeliveryBinding
-import com.otex.homamdriver.utlitites.Constant
 import com.otex.homamdriver.view.home.HomeActivityViewModel
 import com.otex.homamdriver.view.order.OrderActivity
+import com.otex.homamdriver.view.start.MainActivity
 import com.otex.homamuser.utlitites.PrefsUtil
+import java.util.*
 
 class HomeDriverActivity : AppCompatActivity() {
 
@@ -27,9 +29,31 @@ class HomeDriverActivity : AppCompatActivity() {
 
 
         initialize()
-        getHomeDashBord()
+        setuptoolbar()
 
         click()
+    }
+
+    private fun setuptoolbar() {
+        setSupportActionBar(binding.toolbar)
+        Objects.requireNonNull(supportActionBar)?.setDisplayShowTitleEnabled(false)
+        binding.toolbar.setNavigationIcon(R.drawable.ic_menu)
+
+        binding.toolbar.setNavigationOnClickListener { view: View? ->
+            if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                binding.drawerLayout.closeDrawer(GravityCompat.START)
+            } else {
+                binding.drawerLayout.openDrawer(GravityCompat.START)
+
+            }
+        }
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        getHomeDashBord()
+
     }
 
     private fun getHomeDashBord() {
@@ -45,23 +69,18 @@ class HomeDriverActivity : AppCompatActivity() {
 
 
         binding.waitingbtn.setOnClickListener {
-            val intent= Intent(this, OrderActivity::class.java)
-            intent.putExtra("type","pending")
-            startActivity(intent)
+//            val intent= Intent(this, OrderActivity::class.java)
+//            intent.putExtra("type","pending")
+//            startActivity(intent)
 
         }
 
         binding.deliveredbtn.setOnClickListener {
             val intent= Intent(this, OrderActivity::class.java)
-            intent.putExtra("type","delivered")
+            intent.putExtra("type","completed")
             startActivity(intent)
         }
 
-        binding.acceptedbtn.setOnClickListener {
-//            val intent= Intent(this, OrderActivity::class.java)
-//            intent.putExtra("type","accepted")
-//            startActivity(intent)
-        }
 
         binding.ondeliverybtn.setOnClickListener {
             val intent= Intent(this, OrderActivity::class.java)
@@ -69,16 +88,13 @@ class HomeDriverActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.totalstoreubtn.setOnClickListener {
-//            val intent=Intent(this,OrderActivity::class.java)
-//            intent.putExtra("type","canceled")
-//            startActivity(intent)
-        }
 
-        binding.totaldeliveryubtn.setOnClickListener {
-//            val intent=Intent(this,OrderActivity::class.java)
-//            intent.putExtra("type","canceled")
-//            startActivity(intent)
+
+        binding.drawer.logout.setOnClickListener {
+            PrefsUtil.with(this).add("token","").apply()
+            val intent =Intent(this,MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
     }
@@ -100,6 +116,14 @@ class HomeDriverActivity : AppCompatActivity() {
             binding.totalDeliveryCount.text=it.revenue.toString() +" "+getString(R.string.order)
 
 
+        }
+    }
+
+    override fun onBackPressed() {
+        if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
         }
     }
 

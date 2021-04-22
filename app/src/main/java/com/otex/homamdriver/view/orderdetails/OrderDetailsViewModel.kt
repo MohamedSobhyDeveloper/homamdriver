@@ -14,19 +14,33 @@ class OrderDetailsViewModel : ViewModel() , HandleRetrofitResp {
 
 
     var orderDetailslivedata = MutableLiveData<ModelOrderDetails>()
-    var confirmOrderDriverlivedata = MutableLiveData<ModelOrderDetails>()
+    var confirmOrderDriverlivedata = MutableLiveData<ModelAccept>()
+    var pickOrderDriverlivedata = MutableLiveData<ModelAccept>()
     var confirmOrderRestlivedata = MutableLiveData<ModelAccept>()
+    var changeStatusLiveData = MutableLiveData<ModelAccept>()
 
     fun getorderdetails(context: Context, meMap: HashMap<String, String?>?){
         HandelCalls.getInstance(context)?.call(DataEnum.orderdetails.name, meMap, true, this)
 
     }
-    fun confirmOrderDriver(context: Context, meMap: HashMap<String, String?>?){
-        HandelCalls.getInstance(context)?.call(DataEnum.confirmdriver.name, meMap, true, this)
 
-    }
     fun confirmOrderRestaurant(context: Context, meMap: HashMap<String, String?>?){
         HandelCalls.getInstance(context)?.call(DataEnum.confirmrest.name, meMap, true, this)
+
+    }
+
+    fun changeStatusRestaurant(context: Context, meMap: HashMap<String, String?>?){
+        HandelCalls.getInstance(context)?.call(DataEnum.changeStatus.name, meMap, true, this)
+
+    }
+
+    fun pickOrderDriver(context: Context, meMap: HashMap<String, String?>?){
+        HandelCalls.getInstance(context)?.call(DataEnum.pickOrder.name, meMap, true, this)
+
+    }
+
+    fun confirmOrderDriver(context: Context, meMap: HashMap<String, String?>?){
+        HandelCalls.getInstance(context)?.call(DataEnum.confirmdriver.name, meMap, true, this)
 
     }
 
@@ -36,12 +50,20 @@ class OrderDetailsViewModel : ViewModel() , HandleRetrofitResp {
             orderDetailslivedata.postValue(modelOrderDetails)
 
         }else if(flag==DataEnum.confirmdriver.name){
-            val modelOrderDetails: ModelOrderDetails = o as ModelOrderDetails
-            confirmOrderDriverlivedata.postValue(modelOrderDetails)
+            val modelAccept: ModelAccept = o as ModelAccept
+            confirmOrderDriverlivedata.postValue(modelAccept)
+
+        }else if(flag==DataEnum.pickOrder.name){
+            val modelAccept: ModelAccept = o as ModelAccept
+            pickOrderDriverlivedata.postValue(modelAccept)
 
         }else if(flag==DataEnum.confirmrest.name){
             val modelAccept: ModelAccept = o as ModelAccept
             confirmOrderRestlivedata.postValue(modelAccept)
+
+        }else if(flag==DataEnum.changeStatus.name){
+            val modelAccept: ModelAccept = o as ModelAccept
+            changeStatusLiveData.postValue(modelAccept)
 
         }
     }

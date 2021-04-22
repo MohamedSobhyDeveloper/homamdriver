@@ -7,6 +7,6 @@ enum class DataEnum {
     shversionName,
     loginDriver,loginRestaurant,
     homeDriver, homeRestaurant,order,orderdetails,
-    confirmdriver,confirmrest
+    confirmdriver,confirmrest,URLpagination,changeStatus,pickOrder
 
 }
