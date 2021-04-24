@@ -11,6 +11,7 @@ import androidx.lifecycle.observe
 import com.otex.homamdriver.R
 import com.otex.homamdriver.databinding.ActivityHomeDeliveryBinding
 import com.otex.homamdriver.view.home.HomeActivityViewModel
+import com.otex.homamdriver.view.login.UpdatePassowrdActivity
 import com.otex.homamdriver.view.order.OrderActivity
 import com.otex.homamdriver.view.start.MainActivity
 import com.otex.homamuser.utlitites.PrefsUtil
@@ -67,11 +68,18 @@ class HomeDriverActivity : AppCompatActivity() {
 
     private fun click() {
 
+        binding.drawer.updatePassword.setOnClickListener {
+            val intent= Intent(this, UpdatePassowrdActivity::class.java)
+            startActivity(intent)
+        }
+
+
+
 
         binding.waitingbtn.setOnClickListener {
-//            val intent= Intent(this, OrderActivity::class.java)
-//            intent.putExtra("type","pending")
-//            startActivity(intent)
+            val intent= Intent(this, OrderActivity::class.java)
+            intent.putExtra("type","ready_for_delivery")
+            startActivity(intent)
 
         }
 
@@ -101,6 +109,7 @@ class HomeDriverActivity : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun initialize() {
+        binding.drawer.openCloseBtn.visibility=View.GONE
         homeActivityViewModel = ViewModelProvider(this).get(HomeActivityViewModel::class.java)
         observerHomeDriverDashBord()
 
@@ -111,7 +120,7 @@ class HomeDriverActivity : AppCompatActivity() {
         homeActivityViewModel!!.homeDriverLivedata.observe(this) {
 
             binding.deliveredCount.text=it.delivered.toString() +" "+getString(R.string.order)
-           // binding.orderCount.text=it.pending.toString() +" "+getString(R.string.order)
+            binding.orderCount.text=it.pending.toString() +" "+getString(R.string.order)
             binding.ondeliveryCount.text=it.on_delivery.toString() +" "+getString(R.string.order)
             binding.totalDeliveryCount.text=it.revenue.toString() +" "+getString(R.string.order)
 

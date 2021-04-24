@@ -1,7 +1,6 @@
-plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
-}
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 30
@@ -66,6 +65,8 @@ dependencies {
     implementation 'com.daimajia.androidanimations:library:2.4@aar'
     implementation 'com.squareup.picasso:picasso:2.71828'
 
+    implementation platform('com.google.firebase:firebase-bom:27.1.0')
+    implementation 'com.google.firebase:firebase-messaging'
 
 
 }

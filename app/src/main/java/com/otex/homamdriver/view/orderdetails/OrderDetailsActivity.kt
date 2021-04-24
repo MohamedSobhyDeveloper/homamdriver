@@ -86,7 +86,7 @@ class OrderDetailsActivity : BaseActivity() {
         }else{
             val map = HashMap<String, String?>()
             map.put("order_id",intent.getStringExtra("order_id"))
-            orderDetailsViewModel?.confirmOrderDriver(this,map)
+            orderDetailsViewModel?.pickOrderDriver(this,map)
         }
 
     }
@@ -119,6 +119,7 @@ class OrderDetailsActivity : BaseActivity() {
             binding.txtType.setTextColor(getColor(R.color.acceptedcolor))
 
         }else if (status.equals("ready_for_delivery")){
+            confirm_Or_Reject(type,status)
 
             binding.txtType.text=getString(R.string.ready_for_delivery)
             binding.txtType.setTextColor(getColor(R.color.acceptedcolor))
@@ -152,7 +153,10 @@ class OrderDetailsActivity : BaseActivity() {
             binding.btnReadydelivery.visibility=View.VISIBLE
        }else if(status.equals("on_delivery")){
             binding.btnDelivered.visibility=View.VISIBLE
-            }
+            }else if(status.equals("ready_for_delivery")){
+            binding.btnAccepted.visibility=View.VISIBLE
+            binding.btnRejected.visibility=View.GONE
+        }
 
 
 
@@ -185,7 +189,7 @@ class OrderDetailsActivity : BaseActivity() {
 
         }
 
-        orderDetailsViewModel!!.confirmOrderDriverlivedata.observe(this) {
+        orderDetailsViewModel!!.pickOrderDriverlivedata.observe(this) {
 
             if (it.status==1){
                 Toasty.success(this, getString(R.string.order_picked), Toast.LENGTH_SHORT, true).show()

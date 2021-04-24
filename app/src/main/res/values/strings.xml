@@ -40,4 +40,17 @@
     <string name="order_canceled">Order Canceled</string>
     <string name="order_delivered">Order Delivered Successfully</string>
     <string name="order_picked">Order Picked Successfully</string>
+    <string name="update_password">Update Password</string>
+    <string name="please_enter_your_password">Please enter your password</string>
+    <string name="new_password">New Password</string>
+    <string name="re_type_password">Re_type Password</string>
+    <string name="update">Update</string>
+    <string name="enter_new_pass">Enter New password</string>
+    <string name="enter_retype_pass">Retype password</string>
+    <string name="dosent_match">The password does not match the new password</string>
+    <string name="update_pass_success">Password Updated Successfully</string>
+    <string name="open">openrestaurant</string>
+    <string name="close">closerestaurant</string>
+    <string name="stayss_changes">Restaurant Status Changed Successfully</string>
+    <string name="res_closed">resturant Closed</string>
 </resources>

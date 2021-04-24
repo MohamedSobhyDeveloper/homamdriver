@@ -7,6 +7,6 @@ enum class DataEnum {
     shversionName,
     loginDriver,loginRestaurant,
     homeDriver, homeRestaurant,order,orderdetails,
-    confirmdriver,confirmrest,URLpagination,changeStatus,pickOrder
+    confirmdriver,confirmrest,URLpagination,changeStatus,pickOrder,updatePass,openClose,profile,firebaseToken
 
 }

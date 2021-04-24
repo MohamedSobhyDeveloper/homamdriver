@@ -41,4 +41,17 @@
     <string name="order_canceled">تم الغاء الطلب</string>
     <string name="order_delivered">تم التوصيل بنجاح</string>
     <string name="order_picked">لقد قمت باستلام الطلب</string>
+    <string name="update_password">تحديث كلمة السر</string>
+    <string name="please_enter_your_password">من فضلك أدخل رقمك السري</string>
+    <string name="new_password">كلمة السر الجديدة</string>
+    <string name="re_type_password">اعد كتابة كلمة المرور</string>
+    <string name="update">تحديث</string>
+    <string name="enter_new_pass">أدخل كلمة مرور جديدة</string>
+    <string name="enter_retype_pass">اعد كتابة كلمة المرور</string>
+    <string name="dosent_match">كلمة المرور لا تتطابق مع كلمة المرور الجديدة</string>
+    <string name="update_pass_success">تم تحديث كلمة السر بنجاح</string>
+    <string name="open">فتح المطعم</string>
+    <string name="close">اغلاق المطعم</string>
+    <string name="stayss_changes">تم فتح المطعم</string>
+    <string name="res_closed">تم اغلاق المطعم</string>
 </resources>

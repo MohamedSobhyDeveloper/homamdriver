@@ -85,6 +85,14 @@ class HandelCalls {
         }else if(flag==DataEnum.pickOrder.name){
             val order_id=meMap?.get("order_id")
             callRetrofit(restRetrofit!!.getClientService().pickOrderDriver(order_id!!), flag, ShowLoadingDialog)
+        }else if(flag==DataEnum.updatePass.name){
+            val type=meMap?.get("type")
+            callRetrofit(restRetrofit!!.getClientService().updatePassword(meMap, type!!), flag, ShowLoadingDialog)
+        }else if(flag==DataEnum.openClose.name){
+            val status=meMap?.get("status")
+            callRetrofit(restRetrofit!!.getClientService().openClose(status!!), flag, ShowLoadingDialog)
+        }else if(flag==DataEnum.profile.name){
+            callRetrofit(restRetrofit!!.getClientService().profile(), flag, ShowLoadingDialog)
         }
 
 
@@ -138,7 +146,7 @@ class HandelCalls {
 
 
 
-                            onRespnse!!.onBadRequest(flag, response.errorBody()!!.string())
+//                            onRespnse!!.onBadRequest(flag, response.errorBody()!!.string())
 
                         } catch (e: IOException) {
                             e.printStackTrace()

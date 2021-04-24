@@ -1,8 +1,11 @@
 package com.otex.homamdriver.retrofit
 
 import com.otex.homamdriver.view.home.modeldriver.ModelHomeDashBordDriver
+import com.otex.homamdriver.view.home.modelprofile.ModelProfile
 import com.otex.homamdriver.view.home.modelrestaurant.ModelHomeDashBordRestaurant
+import com.otex.homamdriver.view.home.modelstatsu.ModelStatus
 import com.otex.homamdriver.view.login.modeldriver.ModelLoginDriver
+import com.otex.homamdriver.view.login.modelpassword.ModelUpdatePassword
 import com.otex.homamdriver.view.order.model.ModelOrder
 import com.otex.homamdriver.view.orderdetails.model.ModelOrderDetails
 import com.otex.homamdriver.view.orderdetails.modelaccept.ModelAccept
@@ -54,5 +57,20 @@ interface ApiCall {
 
     @POST("restaurant/orders/{order_id}/change-status/{status}")
     fun changeStatusRes(@Path("order_id") order_id:String,@Path("status") status:String): Call<ModelAccept?>?
+
+
+    @FormUrlEncoded
+    @POST("{type}/update-password")
+    fun updatePassword(@FieldMap map: HashMap<String, String?>?,@Path("type") type:String): Call<ModelUpdatePassword?>?
+
+
+    @GET("restaurant/profile")
+    fun profile(): Call<ModelProfile?>?
+
+    @POST("restaurant/update-open-status/{status}")
+    fun openClose(@Path("status") status:String): Call<ModelStatus?>?
+
+
+
 
 }
