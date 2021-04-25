@@ -1,13 +1,17 @@
 package com.otex.homamdriver.retrofit
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.widget.Toast
 import com.otex.homamdriver.interfaces.HandleRetrofitResp
 import com.otex.homamdriver.interfaces.HandleRetrofitRespAdapter
+import com.otex.homamdriver.utlitites.Constant
 import com.otex.homamdriver.utlitites.DataEnum
 import com.otex.homamdriver.utlitites.HelpMe
 import com.otex.homamdriver.utlitites.Loading
+import com.otex.homamdriver.view.login.LoginActivity
+import com.otex.homamuser.utlitites.PrefsUtil
 import es.dmoral.toasty.Toasty
 import org.json.JSONException
 import org.json.JSONObject
@@ -118,7 +122,13 @@ class HandelCalls {
                         if (onRespnse != null) Log.d("testing", "onResponse() minma called with: call = [$call], response = [$response]")
                         onRespnse!!.onResponseSuccess(flag, response.body())
                     }
-                } else if (response.code() == 400 || response.code() == 401 || response.code() == 300) {
+                }else if (response.code() == 401){
+                    PrefsUtil.with(context!!).add("token","").apply()
+                    val intent = Intent(context, LoginActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    context?.startActivity(intent)
+                } else if (response.code() == 400 ||  response.code() == 300) {
                     Log.e("res1", "resp")
                     if (onRespnse != null) {
                         Log.e("res2", "resp")
