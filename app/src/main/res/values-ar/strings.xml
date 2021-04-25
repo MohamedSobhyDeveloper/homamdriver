@@ -31,7 +31,7 @@
     <string name="no_orders_found">لا توجد طلبات</string>
     <string name="orders">طلبات</string>
     <string name="dished">اطباق</string>
-    <string name="le">ج.م</string>
+    <string name="le">د.ل</string>
     <string name="ordercofirm">تم تأكيد الطلب</string>
     <string name="working_on">طلب في التجهيز</string>
     <string name="ready_for_delivery">جاهز للتوصيل</string>
