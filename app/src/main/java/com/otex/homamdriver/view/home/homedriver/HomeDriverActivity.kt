@@ -78,7 +78,7 @@ class HomeDriverActivity : AppCompatActivity() {
 
         binding.waitingbtn.setOnClickListener {
             val intent= Intent(this, OrderActivity::class.java)
-            intent.putExtra("type","ready_for_delivery")
+            intent.putExtra("type","accepted")
             startActivity(intent)
 
         }

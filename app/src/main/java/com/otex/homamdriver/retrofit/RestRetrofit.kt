@@ -73,12 +73,14 @@ class RestRetrofit private constructor() {
 
                 newRequest = request.newBuilder()
                     .header(Authorization, "Bearer $token")
-                    .method(request.method, request.body)
+                        .header("Accept", "application/json")
+                        .method(request.method, request.body)
                     .build()
                 chain.proceed(newRequest)
             } else {
                 newRequest = request.newBuilder()
-                    .method(request.method, request.body)
+                        .header("Accept", "application/json")
+                        .method(request.method, request.body)
                     .build()
                 chain.proceed(newRequest)
             }

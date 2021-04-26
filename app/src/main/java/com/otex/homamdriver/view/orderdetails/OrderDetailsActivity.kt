@@ -148,7 +148,12 @@ class OrderDetailsActivity : BaseActivity() {
                 binding.btnRejected.visibility=View.VISIBLE
             }
         }else if(status.equals("accepted")){
-            binding.btnWorkon.visibility=View.VISIBLE
+            if(type==Constant.driver){
+                binding.btnAccepted.visibility=View.VISIBLE
+                binding.btnRejected.visibility=View.GONE
+            }else{
+                binding.btnWorkon.visibility=View.VISIBLE
+            }
         }else if(status.equals("working_on")){
             binding.btnReadydelivery.visibility=View.VISIBLE
        }else if(status.equals("on_delivery")){
