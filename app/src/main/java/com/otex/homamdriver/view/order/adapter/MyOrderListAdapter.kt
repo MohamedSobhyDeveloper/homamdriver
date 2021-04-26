@@ -53,7 +53,13 @@ class MyOrderListAdapter(private val context: Context, val list: List<Data>,
         holder.binding.txtDate.text=list[position].date
         holder.binding.numItem.text=list[position].dishes.toString()+" "+context.getString(R.string.dished)
         holder.binding.costTv.text=list[position].total.toString()+" "+context.getString(R.string.le)
-        Picasso.get().load(list[position].restaurant_logo).into(holder.binding.imgOrder)
+        if (list[position].restaurant_logo.isNotEmpty()){
+            Picasso.get().load(list[position].restaurant_logo).into(holder.binding.imgOrder)
+
+        }else{
+            Picasso.get().load(R.drawable.pasta).into(holder.binding.imgOrder)
+
+        }
 
 
         holder.binding.orderCard.setOnClickListener {

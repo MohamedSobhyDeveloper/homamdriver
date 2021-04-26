@@ -169,7 +169,13 @@ class OrderDetailsActivity : BaseActivity() {
         orderDetailsViewModel = ViewModelProvider(this).get(OrderDetailsViewModel::class.java)
         orderDetailsViewModel!!.orderDetailslivedata.observe(this) {
 
-            Picasso.get().load(it.data.restaurant_logo).into(binding.imgRest)
+            if (it.data.restaurant_logo.isNotEmpty()){
+                Picasso.get().load(it.data.restaurant_logo).into(binding.imgRest)
+
+            }else{
+                Picasso.get().load(R.drawable.pasta).into(binding.imgRest)
+
+            }
             binding.resName.text=it.data.restaurant
             binding.txtPriceTotalEnd.text=it.data.total.toString()
             binding.txtPriceDelivery.text=it.data.shipping_fees.toString()
