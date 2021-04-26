@@ -11,8 +11,10 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.otex.homamdriver.R
 import com.otex.homamdriver.databinding.ItemMyorderBinding
+import com.otex.homamdriver.utlitites.Constant
 import com.otex.homamdriver.view.order.model.Data
 import com.otex.homamdriver.view.orderdetails.OrderDetailsActivity
+import com.otex.homamuser.utlitites.PrefsUtil
 import com.squareup.picasso.Picasso
 
 
@@ -32,8 +34,14 @@ class MyOrderListAdapter(private val context: Context, val list: List<Data>,
             holder.binding.orderStatus.text=context.getString(R.string.delivered)
             holder.binding.orderStatus.setTextColor(context.getColor(R.color.delivercolor))
         }else if (status.equals("accepted")){
-            holder.binding.orderStatus.text=context.getString(R.string.accepted_order)
-            holder.binding.orderStatus.setTextColor(context.getColor(R.color.acceptedcolor))
+            if(PrefsUtil.with(context).get("type", "")== Constant.store){
+                holder.binding.orderStatus.text=context.getString(R.string.accepted_order)
+                holder.binding.orderStatus.setTextColor(context.getColor(R.color.acceptedcolor))
+            }else{
+                holder.binding.orderStatus.text=context.getString(R.string.waiting_order)
+                holder.binding.orderStatus.setTextColor(context.getColor(R.color.acceptedcolor))
+            }
+
         }else if (status.equals("canceled")){
             holder.binding.orderStatus.text=context.getString(R.string.canceled_order)
             holder.binding.orderStatus.setTextColor(context.getColor(R.color.cancelcolor))
