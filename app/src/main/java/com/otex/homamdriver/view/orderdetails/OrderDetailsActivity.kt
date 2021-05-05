@@ -181,7 +181,7 @@ class OrderDetailsActivity : BaseActivity() {
             binding.resName.text=it.data.restaurant
             binding.txtPriceTotalEnd.text= it.data.total
             binding.txtPriceDelivery.text= it.data.shipping_fees
-//            binding.txtPriceTotalFirst.text=(it.data.total.toInt()-it.data.shipping_fees.toInt()).toString()
+            binding.txtPriceTotalFirst.text=(it.data.total.toInt()-it.data.shipping_fees.toInt()).toString()
 
             val layoutManager = LinearLayoutManager(this)
             binding.recOrderCart.layoutManager = layoutManager
