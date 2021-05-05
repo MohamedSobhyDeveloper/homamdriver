@@ -4,5 +4,6 @@ data class ModelHomeDashBordDriver(
     val delivered: Int,
     val pending: Int,
     val revenue: Int,
+    val accepted: Int,
     val on_delivery:Int
 )

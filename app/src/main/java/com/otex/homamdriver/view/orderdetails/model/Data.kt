@@ -6,7 +6,7 @@ data class Data(
     val date: String,
     val driver: String,
     val email: String,
-    val id: Int,
+    val id: String,
     val items: List<Item>,
     val lat: Any,
     val long: Any,
@@ -15,7 +15,7 @@ data class Data(
     val phone: Any,
     val restaurant: String,
     val restaurant_logo: String,
-    val shipping_fees: Int,
+    val shipping_fees: String,
     val status: String,
-    val total: Int
+    val total: String
 )

@@ -64,7 +64,7 @@ class OrderDetailsActivity : BaseActivity() {
         binding.btnReadydelivery.setOnClickListener {
             click="ready_for_delivery"
             val map = HashMap<String, String?>()
-            map.put("status","ready_for_delivery")
+            map.put("status","on_delivery")
             map.put("order_id",intent.getStringExtra("order_id"))
             orderDetailsViewModel?.changeStatusRestaurant(this,map)
         }
@@ -148,10 +148,7 @@ class OrderDetailsActivity : BaseActivity() {
                 binding.btnRejected.visibility=View.VISIBLE
             }
         }else if(status.equals("accepted")){
-            if(type==Constant.driver){
-                binding.btnAccepted.visibility=View.VISIBLE
-                binding.btnRejected.visibility=View.GONE
-            }else{
+            if(type==Constant.store){
                 binding.btnWorkon.visibility=View.VISIBLE
             }
         }else if(status.equals("working_on")){
@@ -182,9 +179,9 @@ class OrderDetailsActivity : BaseActivity() {
 
             }
             binding.resName.text=it.data.restaurant
-            binding.txtPriceTotalEnd.text=it.data.total.toString()
-            binding.txtPriceDelivery.text=it.data.shipping_fees.toString()
-            binding.txtPriceTotalFirst.text=(it.data.total-it.data.shipping_fees).toString()
+            binding.txtPriceTotalEnd.text= it.data.total
+            binding.txtPriceDelivery.text= it.data.shipping_fees
+//            binding.txtPriceTotalFirst.text=(it.data.total.toInt()-it.data.shipping_fees.toInt()).toString()
 
             val layoutManager = LinearLayoutManager(this)
             binding.recOrderCart.layoutManager = layoutManager
@@ -214,7 +211,7 @@ class OrderDetailsActivity : BaseActivity() {
         orderDetailsViewModel!!.confirmOrderRestlivedata.observe(this) {
 
             if(it.status==1){
-                if (it.order.order_status.equals("1")){
+                if (it.order.status.equals("accepted")){
                    Toasty.success(this, getString(R.string.ordercofirm), Toast.LENGTH_SHORT, true).show()
 
                 }else{

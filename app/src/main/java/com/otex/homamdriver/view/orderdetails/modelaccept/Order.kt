@@ -18,7 +18,7 @@ data class Order(
     val phone: String,
     val restaurant: String,
     val restaurant_logo: String,
-    val shipping_fees: Int,
+    val shipping_fees: String,
     val status: String,
-    val total: Int
+    val total: String
 )

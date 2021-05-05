@@ -78,7 +78,7 @@ class HomeDriverActivity : AppCompatActivity() {
 
         binding.waitingbtn.setOnClickListener {
             val intent= Intent(this, OrderActivity::class.java)
-            intent.putExtra("type","accepted")
+            intent.putExtra("type","pending")
             startActivity(intent)
 
         }
@@ -95,6 +95,13 @@ class HomeDriverActivity : AppCompatActivity() {
             intent.putExtra("type","on_delivery")
             startActivity(intent)
         }
+
+        binding.acceptedbtn.setOnClickListener {
+            val intent= Intent(this, OrderActivity::class.java)
+            intent.putExtra("type","accepted")
+            startActivity(intent)
+        }
+
 
 
 
@@ -123,6 +130,7 @@ class HomeDriverActivity : AppCompatActivity() {
             binding.orderCount.text=it.pending.toString() +" "+getString(R.string.order)
             binding.ondeliveryCount.text=it.on_delivery.toString() +" "+getString(R.string.order)
             binding.totalDeliveryCount.text=it.revenue.toString() +" "+getString(R.string.order)
+            binding.acceptedCount.text=it.accepted.toString() +" "+getString(R.string.order)
 
 
         }
