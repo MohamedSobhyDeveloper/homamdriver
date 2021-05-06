@@ -11,6 +11,7 @@ import com.otex.homamdriver.utlitites.DataEnum
 import com.otex.homamdriver.utlitites.HelpMe
 import com.otex.homamdriver.utlitites.Loading
 import com.otex.homamdriver.view.login.LoginActivity
+import com.otex.homamdriver.view.start.MainActivity
 import com.otex.homamuser.utlitites.PrefsUtil
 import es.dmoral.toasty.Toasty
 import org.json.JSONException
@@ -124,7 +125,7 @@ class HandelCalls {
                     }
                 }else if (response.code() == 401){
                     PrefsUtil.with(context!!).add("token","").apply()
-                    val intent = Intent(context, LoginActivity::class.java)
+                    val intent = Intent(context, MainActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     context?.startActivity(intent)

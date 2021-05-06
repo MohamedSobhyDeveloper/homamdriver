@@ -9,6 +9,8 @@ data class ModelHomeDashBordRestaurant(
     val delivered: Int,
     val pending: Int,
     val revenue: Int,
-    val working_on: Int
+    val working_on: Int,
+    val on_delivery:Int
+
 
 )

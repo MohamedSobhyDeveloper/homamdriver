@@ -314,6 +314,52 @@
                 tools:ignore="HardcodedText" />
         </LinearLayout>
 
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="160dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/canceledbtn"
+            android:background="@drawable/round_button_darkgray"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:id="@+id/ondeliverybtn"
+            android:visibility="visible"
+            android:layout_marginTop="10dp"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/cancel"
+                android:visibility="gone"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/on_delivery"
+                android:textColor="@color/white"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/robotobold"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 Order"
+                android:textColor="@color/white"
+                android:id="@+id/ondelivery_count"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/robotobold"
+                android:textSize="18sp"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
         <LinearLayout
             android:id="@+id/totalstoreubtn"
             android:layout_width="0dp"
@@ -326,8 +372,9 @@
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/canceledbtn">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ondeliverybtn"
+            >
 
             <ImageView
                 android:layout_width="wrap_content"

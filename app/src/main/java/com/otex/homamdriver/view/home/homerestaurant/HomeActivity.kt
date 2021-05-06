@@ -117,6 +117,13 @@ class HomeActivity : BaseActivity() {
             startActivity(intent)
         }
 
+        binding.ondeliverybtn.setOnClickListener {
+            val intent= Intent(this, OrderActivity::class.java)
+            intent.putExtra("type","on_delivery")
+            startActivity(intent)
+        }
+
+
 //        binding.readyForbtn.setOnClickListener {
 //            val intent=Intent(this,OrderActivity::class.java)
 //            intent.putExtra("type","ready_for_delivery")
@@ -167,6 +174,7 @@ class HomeActivity : BaseActivity() {
             binding.accptedCount.text=it.accepted.toString() +" "+getString(R.string.order)
             binding.totalStoreCount.text=it.revenue.toString() +" "+getString(R.string.order)
             binding.orderWorkOnCount.text=it.working_on.toString() +" "+getString(R.string.order)
+            binding.ondeliveryCount.text=it.on_delivery.toString() +" "+getString(R.string.order)
 
 
         }

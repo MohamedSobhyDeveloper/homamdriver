@@ -154,7 +154,11 @@ class OrderDetailsActivity : BaseActivity() {
         }else if(status.equals("working_on")){
             binding.btnReadydelivery.visibility=View.VISIBLE
        }else if(status.equals("on_delivery")){
-            binding.btnDelivered.visibility=View.VISIBLE
+            if(type==Constant.driver){
+                binding.btnDelivered.visibility=View.VISIBLE
+
+            }
+
             }else if(status.equals("ready_for_delivery")){
             if(type==Constant.driver){
                 binding.btnAccepted.visibility=View.VISIBLE
