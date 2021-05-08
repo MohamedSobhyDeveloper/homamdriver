@@ -15,6 +15,7 @@ import com.google.firebase.messaging.RemoteMessage
 import com.otex.homamdriver.R
 import com.otex.homamdriver.utlitites.DataEnum
 import com.otex.homamdriver.view.home.homerestaurant.HomeActivity
+import com.otex.homamdriver.view.order.OrderActivity
 import com.otex.homamuser.utlitites.PrefsUtil
 
 
@@ -68,8 +69,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             notificationManager.createNotificationChannel(defaultChannel)
         }
 
-
-        var intent = Intent(this, HomeActivity::class.java)
+        val intent= Intent(this, OrderActivity::class.java)
+        intent.putExtra("type","pending")
         val data = remoteMessage.getData()
 
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)

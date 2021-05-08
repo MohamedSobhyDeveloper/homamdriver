@@ -37,4 +37,19 @@
         android:layout_marginEnd="10dp"
         />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_price"
+        app:layout_constraintTop_toTopOf="@+id/txt_compo"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_compo"
+        app:layout_constraintEnd_toStartOf="@+id/txt_price_compo"
+        android:text="السعر"
+        android:textSize="15sp"
+        android:fontFamily="@font/robotoregular"
+        android:textColor="@color/eyecolor"
+        android:layout_marginEnd="10dp"
+        />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

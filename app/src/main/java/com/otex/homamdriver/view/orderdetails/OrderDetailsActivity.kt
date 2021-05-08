@@ -1,6 +1,8 @@
 package com.otex.homamdriver.view.orderdetails
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -10,13 +12,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.otex.homamdriver.R
 import com.otex.homamdriver.databinding.ActivityOrderDetailsBinding
 import com.otex.homamdriver.utlitites.Constant
-
 import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.OrderDetailsAdapter
 import com.squareup.picasso.Picasso
 import es.dmoral.toasty.Toasty
-import java.util.HashMap
+import java.util.*
+
 
 class OrderDetailsActivity : BaseActivity() {
     lateinit var binding: ActivityOrderDetailsBinding
@@ -44,35 +46,35 @@ class OrderDetailsActivity : BaseActivity() {
 
         binding.btnAccepted.setOnClickListener {
 
-            acceptOrder(type,"1")
+            acceptOrder(type, "1")
 
         }
 
         binding.btnRejected.setOnClickListener {
-            acceptOrder(type,"0")
+            acceptOrder(type, "0")
 
         }
 
         binding.btnWorkon.setOnClickListener {
             click="working_on"
             val map = HashMap<String, String?>()
-            map.put("status","working_on")
-            map.put("order_id",intent.getStringExtra("order_id"))
-            orderDetailsViewModel?.changeStatusRestaurant(this,map)
+            map.put("status", "working_on")
+            map.put("order_id", intent.getStringExtra("order_id"))
+            orderDetailsViewModel?.changeStatusRestaurant(this, map)
         }
 
         binding.btnReadydelivery.setOnClickListener {
             click="ready_for_delivery"
             val map = HashMap<String, String?>()
-            map.put("status","on_delivery")
-            map.put("order_id",intent.getStringExtra("order_id"))
-            orderDetailsViewModel?.changeStatusRestaurant(this,map)
+            map.put("status", "on_delivery")
+            map.put("order_id", intent.getStringExtra("order_id"))
+            orderDetailsViewModel?.changeStatusRestaurant(this, map)
         }
 
         binding.btnDelivered.setOnClickListener {
             val map = HashMap<String, String?>()
-            map.put("order_id",intent.getStringExtra("order_id"))
-            orderDetailsViewModel?.confirmOrderDriver(this,map)
+            map.put("order_id", intent.getStringExtra("order_id"))
+            orderDetailsViewModel?.confirmOrderDriver(this, map)
         }
     }
 
@@ -80,13 +82,13 @@ class OrderDetailsActivity : BaseActivity() {
 
         if(type==Constant.store){
             val map = HashMap<String, String?>()
-            map.put("status",s)
-            map.put("order_id",intent.getStringExtra("order_id"))
-            orderDetailsViewModel?.confirmOrderRestaurant(this,map)
+            map.put("status", s)
+            map.put("order_id", intent.getStringExtra("order_id"))
+            orderDetailsViewModel?.confirmOrderRestaurant(this, map)
         }else{
             val map = HashMap<String, String?>()
-            map.put("order_id",intent.getStringExtra("order_id"))
-            orderDetailsViewModel?.pickOrderDriver(this,map)
+            map.put("order_id", intent.getStringExtra("order_id"))
+            orderDetailsViewModel?.pickOrderDriver(this, map)
         }
 
     }
@@ -94,11 +96,11 @@ class OrderDetailsActivity : BaseActivity() {
     @SuppressLint("NewApi")
     private fun typeorder() {
         status= intent.getStringExtra("status").toString()
-        type= PrefsUtil.with(this).get("type","")!!
+        type= PrefsUtil.with(this).get("type", "")!!
 
 
         if(status.equals("pending")){
-            confirm_Or_Reject(type,status)
+            confirm_Or_Reject(type, status)
             binding.txtType.text=getString(R.string.waiting_order)
             binding.txtType.visibility=View.GONE
             binding.acceptRejectOrder.visibility=View.VISIBLE
@@ -107,25 +109,25 @@ class OrderDetailsActivity : BaseActivity() {
             binding.txtType.text=getString(R.string.delivered)
             binding.txtType.setTextColor(getColor(R.color.delivercolor))
         }else if(status.equals("accepted")){
-            confirm_Or_Reject(type,status)
+            confirm_Or_Reject(type, status)
             binding.txtType.text=getString(R.string.accepted_order)
             binding.txtType.setTextColor(getColor(R.color.acceptedcolor))
         }else if(status.equals("canceled")){
             binding.txtType.text=getString(R.string.canceled_order)
             binding.txtType.setTextColor(getColor(R.color.cancelcolor))
         }else if (status.equals("working_on")){
-            confirm_Or_Reject(type,status)
+            confirm_Or_Reject(type, status)
             binding.txtType.text=getString(R.string.working_on)
             binding.txtType.setTextColor(getColor(R.color.acceptedcolor))
 
         }else if (status.equals("ready_for_delivery")){
-            confirm_Or_Reject(type,status)
+            confirm_Or_Reject(type, status)
 
             binding.txtType.text=getString(R.string.ready_for_delivery)
             binding.txtType.setTextColor(getColor(R.color.acceptedcolor))
 
         }else if (status.equals("on_delivery")){
-            confirm_Or_Reject(type,status)
+            confirm_Or_Reject(type, status)
 
             binding.txtType.text=getString(R.string.on_delivery)
             binding.txtType.setTextColor(getColor(R.color.acceptedcolor))
@@ -136,7 +138,7 @@ class OrderDetailsActivity : BaseActivity() {
 
     }
 
-    private fun confirm_Or_Reject(type: String,status:String) {
+    private fun confirm_Or_Reject(type: String, status: String) {
 
         if(status.equals("pending")){
 
@@ -182,6 +184,23 @@ class OrderDetailsActivity : BaseActivity() {
                 Picasso.get().load(R.drawable.pasta).into(binding.imgRest)
 
             }
+
+            binding.username.text=it.data.name
+            binding.userphone.text=it.data.phone.toString()
+
+            binding.location.setOnClickListener(object : View.OnClickListener {
+                override fun onClick(v: View?) {
+                    if (it.data.lat.isNotEmpty() && it.data.long.isNotEmpty()) {
+                        val uri = java.lang.String.format(Locale.ENGLISH, "http://maps.google.com/maps?q=loc:%f,%f", it.data.lat.toDouble(), it.data.long.toDouble())
+                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
+                        startActivity(intent)
+                    } else {
+                        Toasty.info(this@OrderDetailsActivity, "لم يتم تحديد بيانات المستخدم", Toast.LENGTH_SHORT, true).show()
+
+                    }
+                }
+
+            })
             binding.resName.text=it.data.restaurant
             binding.txtPriceTotalEnd.text= it.data.total
             binding.txtPriceDelivery.text= it.data.shipping_fees
@@ -190,7 +209,7 @@ class OrderDetailsActivity : BaseActivity() {
             val layoutManager = LinearLayoutManager(this)
             binding.recOrderCart.layoutManager = layoutManager
             val adapter =
-                OrderDetailsAdapter(this,it.data.items)
+                OrderDetailsAdapter(this, it.data.items)
             binding.recOrderCart.adapter = adapter
 
         }
@@ -245,9 +264,9 @@ class OrderDetailsActivity : BaseActivity() {
 
 
         val map = HashMap<String, String?>()
-        map.put("type", PrefsUtil.with(this).get("type","")!!)
-        map.put("order_id",intent.getStringExtra("order_id"))
-        orderDetailsViewModel?.getorderdetails(this,map)
+        map.put("type", PrefsUtil.with(this).get("type", "")!!)
+        map.put("order_id", intent.getStringExtra("order_id"))
+        orderDetailsViewModel?.getorderdetails(this, map)
 
     }
     override fun onBackPressed() {
