@@ -14,7 +14,6 @@ import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.otex.homamdriver.R
 import com.otex.homamdriver.utlitites.DataEnum
-import com.otex.homamdriver.view.home.homerestaurant.HomeActivity
 import com.otex.homamdriver.view.order.OrderActivity
 import com.otex.homamuser.utlitites.PrefsUtil
 
@@ -28,15 +27,15 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             if (remoteMessage.notification != null) {
 
                 showGenericNotification(
-                    remoteMessage,
-                    remoteMessage.notification?.title,
-                    remoteMessage.notification?.body
+                        remoteMessage,
+                        remoteMessage.notification?.title,
+                        remoteMessage.notification?.body
                 )
             } else if (remoteMessage.data != null) {
                 showGenericNotification(
-                    remoteMessage,
-                    remoteMessage.data?.get("body"),
-                    remoteMessage.data?.get("body")
+                        remoteMessage,
+                        remoteMessage.data?.get("body"),
+                        remoteMessage.data?.get("body")
                 )
 
             }
@@ -51,9 +50,9 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     }
 
     private fun showGenericNotification(
-        remoteMessage: RemoteMessage,
-        title: String?,
-        body: String?
+            remoteMessage: RemoteMessage,
+            title: String?,
+            body: String?
     ) {
 
 
@@ -70,15 +69,16 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         }
 
         val intent= Intent(this, OrderActivity::class.java)
-        intent.putExtra("type","pending")
-        val data = remoteMessage.getData()
+        intent.putExtra("type", "pending")
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
 
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+
 
         val pendingIntent = PendingIntent.getActivity(
-            this, 0, intent,
-            PendingIntent.FLAG_ONE_SHOT
+                this, 0, intent,
+                PendingIntent.FLAG_UPDATE_CURRENT
         )
+//        val pendingIntent = PendingIntent.getActivity(this, notId, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 
 
         val notificationBuilder = NotificationCompat.Builder(this, CHANNEL_ID)
