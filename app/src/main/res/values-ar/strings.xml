@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Driver&amp;Restaurnt</string>
+    <string name="app_name">Delivery&amp;Restaurnt</string>
     <string name="login">تسجيل الدخول</string>
     <string name="rotate">180</string>
     <string name="rotate0">0</string>
