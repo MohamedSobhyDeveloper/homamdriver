@@ -31,7 +31,7 @@ class OrderActivityViewModel:ViewModel(), HandleRetrofitResp {
 
         }else if(flag==DataEnum.URLpagination.name){
             val modelorder: ModelOrder = o as ModelOrder
-            urlPaginationLiveData.setValue(modelorder)
+            urlPaginationLiveData.value = modelorder
         }
     }
 

@@ -2,7 +2,7 @@ package com.otex.homamdriver.view.order.model
 
 data class ModelOrder(
     val current_page: Int,
-    val `data`: List<Data>,
+    val `data`: MutableList<Data>,
     val first_page_url: String,
     val from: Int,
     val last_page: Int,

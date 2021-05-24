@@ -18,7 +18,7 @@ import com.otex.homamuser.utlitites.PrefsUtil
 import com.squareup.picasso.Picasso
 
 
-class MyOrderListAdapter(private val context: Context, val list: List<Data>,
+class MyOrderListAdapter(private val context: Context, val list: MutableList<Data>,
                          val status:String)
     : RecyclerView.Adapter<MyOrderListAdapter.MyViewHolder>() {
 
@@ -87,9 +87,9 @@ class MyOrderListAdapter(private val context: Context, val list: List<Data>,
 
 
 
-    fun addList(list: List<Data>) {
+    fun addList(list: MutableList<Data>) {
 
-        this.list.toMutableList().addAll(list)
+        this.list.addAll(list)
         notifyDataSetChanged()
     }
 

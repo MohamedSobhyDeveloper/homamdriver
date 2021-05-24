@@ -158,7 +158,9 @@ class OrderActivity : BaseActivity() {
     }
 
     private fun CallOrderMore() {
-
+        val map = HashMap<String, String?>()
+        map.put("url",nextPage)
+        orderActivityViewModel?.getUrlPagination(this,map)
     }
 
 
