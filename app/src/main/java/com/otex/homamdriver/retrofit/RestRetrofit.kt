@@ -72,6 +72,7 @@ class RestRetrofit private constructor() {
             if (token!!.isNotEmpty()) {
 
                 newRequest = request.newBuilder()
+                    .header("device_id", with(mcontext!!).get("device_id","")!!)
                     .header(Authorization, "Bearer $token")
                         .header("Accept", "application/json")
                         .method(request.method, request.body)

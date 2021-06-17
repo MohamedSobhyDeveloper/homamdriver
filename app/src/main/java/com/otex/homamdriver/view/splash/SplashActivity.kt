@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import com.otex.homamdriver.databinding.ActivitySplashBinding
 import com.otex.homamdriver.utlitites.Constant
+import com.otex.homamdriver.utlitites.HelpMe
 import com.otex.homamdriver.view.home.homedriver.HomeDriverActivity
 import com.otex.homamdriver.view.home.homerestaurant.HomeActivity
 import com.otex.homamdriver.view.start.MainActivity
@@ -20,6 +21,9 @@ class SplashActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        PrefsUtil.with(this).add("device_id", HelpMe.getInstance(this)?.getDeviceId()).apply()
+
 
         Handler().postDelayed({
 

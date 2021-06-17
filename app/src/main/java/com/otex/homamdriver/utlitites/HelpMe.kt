@@ -1,5 +1,6 @@
 package com.otex.homamdriver.utlitites
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
@@ -7,10 +8,13 @@ import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.RectF
+import android.provider.Settings
+import android.telephony.TelephonyManager
 import android.util.Log
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import es.dmoral.toasty.Toasty
@@ -94,6 +98,14 @@ class HelpMe {
     fun hidekeyboard(act: Activity) {
         act.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
         val imm = act.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    }
+
+    @SuppressLint("HardwareIds")
+    fun getDeviceId(): String {
+
+        val deviceId= Settings.Secure.getString(context?.contentResolver, Settings.Secure.ANDROID_ID)
+
+        return deviceId
     }
 
     fun scaleCenterCrop(source: Bitmap, newHeight: Int, newWidth: Int): Bitmap {
